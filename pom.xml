@@ -12,6 +12,8 @@
         <module>SampleService</module>
         <module>CloudCoreEurekaServer</module>
         <module>CloudCoreGateway</module>
+        <module>CloudCoreConfigServer</module>
+        <module>CloudCoreAdminServer</module>
     </modules>
 
     <dependencyManagement>
@@ -41,6 +43,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>1.4.6</version>
         </dependency>
     </dependencies>
 </project>

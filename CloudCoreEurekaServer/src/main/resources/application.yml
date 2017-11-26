@@ -8,3 +8,5 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring.boot.admin.url: http://localhost:8080
