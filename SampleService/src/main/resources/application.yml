@@ -6,6 +6,11 @@ spring.boot.admin.url: http://localhost:8080
 spring:
   application:
     name: sampleService
+  zipkin:
+    base-url: http://localhost:8086
+  sleuth:
+      sampler:
+        percentage: 1.0
   cloud:
     config:
      uri: http://localhost:8085

@@ -1,5 +1,11 @@
 server:
   port: 8085
 
+spring:
+  application.name: ConfigServer
+  boot.admin.url: http://localhost:8080
+
 spring.profiles.active: native
-spring.cloud.config.server.native.searchLocations: classpath:/resources
+spring.cloud.config.server.native.searchLocations: classpath:/config
+
+management.security.enabled: false

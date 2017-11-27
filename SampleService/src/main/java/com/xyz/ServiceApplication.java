@@ -1,20 +1,14 @@
-package com.xyz.service;
+package com.xyz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@RestController
+@EnableSwagger2
 public class ServiceApplication {
-
-        @GetMapping("/service")
-        public String service(){
-            return "service";
-        }
 
         public static void main(String[] args) {
             SpringApplication.run(ServiceApplication.class, args);
