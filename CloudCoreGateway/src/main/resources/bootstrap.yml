@@ -1,0 +1,36 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: gateway
+  cloud:
+      config:
+        discovery:
+          enabled: true
+          service-id: CloudCoreConfigServer
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    sampleService:                                               # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
+      path: /sample/**                                    # 想要映射到的路径
+      service-id: sampleService            # Eureka中的serviceId
+
+#配置Ribbon client, 需要先disable eureka client
+#ribbon:
+#  eureka:
+#    enabled: false
+
+#sampleService: #这是ribion要请求的serviceID
+ # ribbon:
+ #   NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+ #   ListOfServers: http://localhost:8082,http://localhost:9082
+ #   ConnectTimeout: 1000
+ #   ReadTimeout: 3000
+  #  MaxTotalHttpConnections: 500
+  #  MaxConnectionsPerHost: 100

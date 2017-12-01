@@ -1,0 +1,15 @@
+#default
+spring.profiles: default
+
+
+#dev
+---
+spring.profiles: dev
+
+---
+#uat
+spring.profiles: uat
+
+---
+#prod
+spring.profiles: prod

@@ -1,23 +1,26 @@
 server:
-  port: 8082
+  port: 9082
 
-spring.boot.admin.url: http://localhost:8080
 
 spring:
   application:
     name: sampleService
   zipkin:
-    base-url: http://localhost:8086
+    base-url: http://ZipkinServer/
   sleuth:
       sampler:
         percentage: 1.0
   cloud:
     config:
-     uri: http://localhost:8085
-     profile:
-      active: dev
-     label: master
+      discovery:
+        enabled: true
+        serviceId: CloudCoreConfigServer
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8081/eureka/
+
+feign.hystrix.enabled: true
+
+management.security.enabled: false

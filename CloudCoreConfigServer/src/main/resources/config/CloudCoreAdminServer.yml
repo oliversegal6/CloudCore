@@ -1,0 +1,13 @@
+boot.admin.url: http://localhost:8080
+eureka.service.url: http://localhost:8081/eureka/
+
+---
+#dev
+
+spring.profiles： dev
+
+---
+
+#uat
+
+#prod
