@@ -5,20 +5,8 @@ server:
 spring:
   application:
     name: sampleService
-  zipkin:
-    base-url: http://ZipkinServer/
-  sleuth:
-      sampler:
-        percentage: 1.0
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: CloudCoreConfigServer
+  data.mongodb.uri: mongodb://172.17.0.1:27017/stockminingnew
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8081/eureka/
+eureka.client.serviceUrl.defaultZone: http://localhost:8081/eureka/
 
 management.security.enabled: false
