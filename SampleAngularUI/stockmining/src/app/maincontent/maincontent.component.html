@@ -1,0 +1,38 @@
+<div nz-row>
+  <div nz-col nzSpan="8">
+    <button nz-button nzType="primary" (click)="searchData()" [nzLoading]="isLoadingOne">Get Stocks</button>
+  </div>
+  <div nz-col nzSpan="8" nzOffset="8">
+    col-8
+  </div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="24">
+    <nz-table
+      #ajaxTable
+      nzShowSizeChanger
+      [nzFrontPagination]="false"
+      [nzData]="dataSet"
+      [nzLoading]="loading"
+      [nzTotal]="total"
+      [(nzPageIndex)]="pageIndex"
+      [(nzPageSize)]="pageSize"
+      (nzPageIndexChange)="searchData()"
+      (nzPageSizeChange)="searchData(true)">
+      <thead (nzSortChange)="sort($event)" nzSingleSort>
+        <tr>
+          <th nzShowSort nzSortKey="name">Code</th>
+          <th nzShowFilter [nzFilters]="filterGender" (nzFilterChange)="updateFilter($event)">Name</th>
+          <th nzShowSort nzSortKey="email"><span>Industry</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of ajaxTable.data">
+          <td>{{data.tsCode}}</td>
+          <td>{{data.name}}</td>
+          <td>{{data.industry}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

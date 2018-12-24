@@ -1,8 +1,11 @@
 package com.xyz.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -33,17 +36,27 @@ public class MongoDAO {
 	        return user;
 	    }
 	    
-	    public List<JsonObject> findAll(String collectionName) {
-	        Query query=new Query();
-	        List<DBObject> results =  mongoTemplate.find(query, DBObject.class, collectionName);
-	        
-	        List<JsonObject> jsonResults = new ArrayList<JsonObject>();
-	        for(DBObject result : results) {
-	        	jsonResults.add(new Gson().fromJson(JSON.serialize(result), JsonObject.class));
-	        }
-	        return jsonResults;
+	    public List<JSONObject> findAll(String collectionName) {
+	        return find(new HashMap<String, String>(), collectionName);
 	    }
 
+	    public List<JSONObject> find(Map<String, String> params, String collectionName) {
+	        Query query=new Query();
+	        for(String key : params.keySet()) {
+	        	query.addCriteria(Criteria.where(key).is(params.get(key)));
+	        }
+	        query.limit(10);
+	        List<DBObject> results =  mongoTemplate.find(query, DBObject.class, collectionName);
+	        
+	        List<JSONObject> jsonResults = new ArrayList<JSONObject>();
+	        for(DBObject result : results) {
+	        	//jsonResults.add(new Gson().fromJson(JSON.serialize(result), JSONObject.class));
+	        	jsonResults.add(new JSONObject(JSON.serialize(result)));
+	        }
+	        
+	        return jsonResults;
+	    }
+	    
 	    public void updateUser(Object user, String collectionName) {
 	        Query query=new Query(Criteria.where("id").is(""));
 	        Update update= new Update().set("userName", "");

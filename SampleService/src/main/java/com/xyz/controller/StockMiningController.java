@@ -2,6 +2,11 @@ package com.xyz.controller;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
 import com.xyz.dao.MongoDAO;
+import com.xyz.pojo.Stock;
 import com.xyz.service.MongoService;
 import com.xyz.service.StockMiningService;
 
@@ -53,6 +59,13 @@ public class StockMiningController {
         stockMiningService.saveAllStockHistDataByDate("20160101", null);
         
         return "saveAllStockHistData done";
+    }
+    
+    @GetMapping("/findAllStocks")
+    public Stock[] findAllStocks() {
+    	logger.info("findAllStocks start...");
+    	List<Stock> results = stockMiningService.findAllStocks();
+    	return results.toArray(new Stock[results.size()]);
     }
     
     @PostMapping("/saveStockHistData")

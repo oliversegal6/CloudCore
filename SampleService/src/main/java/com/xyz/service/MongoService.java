@@ -2,13 +2,11 @@ package com.xyz.service;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
 import com.xyz.dao.MongoDAO;
 
 @Component
@@ -27,7 +25,7 @@ public class MongoService {
 		 }
 	 }
 	 
-	 public List<JsonObject> findAll(String collectionName) {
+	 public List<JSONObject> findAll(String collectionName) {
 		 
 		 return mongoDAO.findAll(collectionName);
 	 }

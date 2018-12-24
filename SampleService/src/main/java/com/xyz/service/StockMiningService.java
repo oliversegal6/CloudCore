@@ -1,10 +1,12 @@
 package com.xyz.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.google.gson.JsonObject;
+import com.mongodb.util.JSON;
+import com.xyz.pojo.Stock;
 import com.xyz.util.DateUtil;
 import com.xyz.util.HttpclientUtil;
 
@@ -45,9 +49,9 @@ public class StockMiningService {
 	 }
 	 
 	 public void saveAllTop10Floatholders() {
-		 List<JsonObject> allStocks = mongoService.findAll(STOCK_BASIC);
-		 for(JsonObject stock: allStocks) {
-			 String code = stock.get("ts_code").getAsString();
+		 List<JSONObject> allStocks = mongoService.findAll(STOCK_BASIC);
+		 for(JSONObject stock: allStocks) {
+			 String code = stock.get("ts_code").toString();
 			logger.info("saveStockHistData for "  + code);
 			saveTop10Floatholders(code);
 		 }
@@ -59,12 +63,25 @@ public class StockMiningService {
 	 }
 	 
 	 public void saveAllStockHistDataByCode() {
-		 List<JsonObject> allStocks = mongoService.findAll(STOCK_BASIC);
-		 for(JsonObject stock: allStocks) {
-			 String code = stock.get("ts_code").getAsString();
+		 List<JSONObject> allStocks = mongoService.findAll(STOCK_BASIC);
+		 for(JSONObject stock: allStocks) {
+			 String code = stock.get("ts_code").toString();
 			logger.info("saveStockHistData for "  + code);
 			saveStockHistDataByCode(code);
 		 }
+	 }
+	 
+	 public List<Stock> findAllStocks() {
+		 List<JSONObject> stocksJson = mongoService.findAll(STOCK_BASIC);
+		 List<Stock> stocks = new ArrayList<Stock>();
+		 for(JSONObject stockJson : stocksJson) {
+			 Stock stock = new Stock();
+			 stock.setTsCode(stockJson.getString("ts_code"));
+			 stock.setName(stockJson.getString("name"));
+			 stock.setIndustry(stockJson.getString("industry"));
+			 stocks.add(stock);
+		 }
+		 return stocks;
 	 }
 	 
 	 public void saveStockHistDataByDate(String date) {
