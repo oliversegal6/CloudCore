@@ -13,11 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
 import com.xyz.dao.MongoDAO;
 import com.xyz.pojo.Stock;
+import com.xyz.pojo.StockDaily;
 import com.xyz.service.MongoService;
 import com.xyz.service.StockMiningService;
 
@@ -62,9 +64,9 @@ public class StockMiningController {
     }
     
     @GetMapping("/findAllStocks")
-    public Stock[] findAllStocks() {
+    public Stock[] findAllStocks(@RequestParam("pageIndex") Integer pageIndex, @RequestParam("pageSize") Integer pageSize) {
     	logger.info("findAllStocks start...");
-    	List<Stock> results = stockMiningService.findAllStocks();
+    	List<Stock> results = stockMiningService.findAllStocks(pageIndex, pageSize);
     	return results.toArray(new Stock[results.size()]);
     }
     
@@ -74,5 +76,12 @@ public class StockMiningController {
         stockMiningService.saveStockHistDataByCode(code);
         
         return "saveStockHistData done";
+    }
+    
+    @PostMapping("/findStocksLower30Percent")
+    public StockDaily[] findStocksLower30Percent(){
+        logger.info("findStocksLower30Percent start...");
+        List<StockDaily> stocks = stockMiningService.findStocksLower30Percent();
+        return stocks.toArray(new StockDaily[stocks.size()]);
     }
 }

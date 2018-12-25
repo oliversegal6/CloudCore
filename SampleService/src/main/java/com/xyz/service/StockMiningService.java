@@ -3,7 +3,9 @@ package com.xyz.service;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
@@ -12,10 +14,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.JsonObject;
 import com.mongodb.util.JSON;
 import com.xyz.pojo.Stock;
+import com.xyz.pojo.StockDaily;
 import com.xyz.util.DateUtil;
 import com.xyz.util.HttpclientUtil;
 
@@ -49,7 +53,7 @@ public class StockMiningService {
 	 }
 	 
 	 public void saveAllTop10Floatholders() {
-		 List<JSONObject> allStocks = mongoService.findAll(STOCK_BASIC);
+		 List<JSONObject> allStocks = mongoService.findAll(STOCK_BASIC, 0, 0);
 		 for(JSONObject stock: allStocks) {
 			 String code = stock.get("ts_code").toString();
 			logger.info("saveStockHistData for "  + code);
@@ -63,7 +67,7 @@ public class StockMiningService {
 	 }
 	 
 	 public void saveAllStockHistDataByCode() {
-		 List<JSONObject> allStocks = mongoService.findAll(STOCK_BASIC);
+		 List<JSONObject> allStocks = mongoService.findAll(STOCK_BASIC, 0, 0);
 		 for(JSONObject stock: allStocks) {
 			 String code = stock.get("ts_code").toString();
 			logger.info("saveStockHistData for "  + code);
@@ -71,8 +75,8 @@ public class StockMiningService {
 		 }
 	 }
 	 
-	 public List<Stock> findAllStocks() {
-		 List<JSONObject> stocksJson = mongoService.findAll(STOCK_BASIC);
+	 public List<Stock> findAllStocks(Integer pageIndex, Integer pageSize) {
+		 List<JSONObject> stocksJson = mongoService.findAll(STOCK_BASIC, pageIndex, pageSize);
 		 List<Stock> stocks = new ArrayList<Stock>();
 		 for(JSONObject stockJson : stocksJson) {
 			 Stock stock = new Stock();
@@ -123,6 +127,77 @@ public class StockMiningService {
 			currentCalendar.add(Calendar.DAY_OF_MONTH, 1);
 		 }
 	 }
+	 
+	 public List<StockDaily> findStocksLower30Percent() {
+		 List<JSONObject> stocksJson = mongoService.findAll(STOCK_BASIC, 0, 0);
+		 
+		 List<StockDaily> stocks = new ArrayList<StockDaily>();
+		 Calendar calendar = Calendar.getInstance();
+		 Map<String, String> params = new HashMap<String, String>();
+		 params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
+		 List<JSONObject> currentDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+		 
+		 while (currentDailyStocks.size() == 0) {
+			 calendar.add(Calendar.DAY_OF_MONTH, -3);
+			 params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
+			 currentDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+		 }
+		 
+		 calendar.add(Calendar.YEAR, -3);
+		 params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
+		 List<JSONObject>  histDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+		 while (histDailyStocks.size() == 0) {
+			 calendar.add(Calendar.DAY_OF_MONTH, 5);
+			 params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
+			 histDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+		 }
+		 
+		 Map<String, JSONObject> currentDailyStocksMap = new HashMap<String, JSONObject>();
+		 for(JSONObject dailyStock : currentDailyStocks) {
+			 currentDailyStocksMap.put(dailyStock.getString("ts_code"), dailyStock);
+		 }
+		 Map<String, JSONObject> histDailyStocksMap = new HashMap<String, JSONObject>();
+		 for(JSONObject histDailyStock : histDailyStocks) {
+			 histDailyStocksMap.put(histDailyStock.getString("ts_code"), histDailyStock);
+		 }
+		 
+		 
+		 for(JSONObject stockJson : stocksJson) {
+			 String tsCode = stockJson.getString("ts_code");
+			 
+			 JSONObject currentDailyStock = currentDailyStocksMap.get(tsCode);
+			 JSONObject histDailyStock = histDailyStocksMap.get(tsCode);
+			 if(currentDailyStock == null || histDailyStock == null) 
+				 continue;
+			 Float currentPrice = currentDailyStock.getFloat("close");
+			 
+			 
+			 Float histPrice = histDailyStock.getFloat("close");
+			 
+			 Float totalPctChg = histPrice/currentPrice;
+			if(totalPctChg < 1.3)
+				 continue;
+			 
+			 StockDaily stock = new StockDaily();
+			 stock.setTsCode(stockJson.getString("ts_code"));
+			 stock.setName(stockJson.getString("name"));
+			 stock.setTradeDate(currentDailyStock.getString("trade_date"));
+			 stock.setTradeDateHist(histDailyStock.getString("trade_date"));
+			 stock.setClosePrice(currentPrice);
+			 stock.setClosePriceHist(histPrice);
+			 stock.setPctChg(currentDailyStock.getFloat("pct_chg"));
+			 stock.setPctChgHist(histDailyStock.getFloat("pct_chg"));
+			 stock.setTotalPctChg((totalPctChg - 1) * 100);
+			 stocks.add(stock);
+		 }
+		 return stocks;
+	 }
+
+	private List<JSONObject> findHistStock(JSONObject stock, Map<String, String> params, Date currentDate) {
+		 //params.put("ts_code", stock.getString("ts_code"));
+		 params.put("trade_date", DateUtil.dateToStr(currentDate));
+		 return mongoService.find(params, STOCK_HIST_DATA);
+	}
 	 
 	 private String generateQueryBody(String apiName, String param) {
 			String body = "{\"api_name\": \"" + apiName + "\", \"token\": \"" + HTTP_API_TOKEN + "\", \"params\": " + param + "}";

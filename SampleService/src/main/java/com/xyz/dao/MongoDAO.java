@@ -36,16 +36,22 @@ public class MongoDAO {
 	        return user;
 	    }
 	    
-	    public List<JSONObject> findAll(String collectionName) {
-	        return find(new HashMap<String, String>(), collectionName);
+	    public List<JSONObject> findAll(String collectionName, Integer pageIndex, Integer pageSize) {
+	        return findWithPagination(new HashMap<String, String>(), collectionName, pageIndex, pageSize);
 	    }
 
 	    public List<JSONObject> find(Map<String, String> params, String collectionName) {
+	        return findWithPagination(params, collectionName, 0, 0);
+	    }
+		     
+	    	
+	    public List<JSONObject> findWithPagination(Map<String, String> params, String collectionName, Integer pageIndex, Integer pageSize) {
 	        Query query=new Query();
 	        for(String key : params.keySet()) {
 	        	query.addCriteria(Criteria.where(key).is(params.get(key)));
 	        }
-	        query.limit(10);
+	        if(pageIndex != 0) query.skip((pageIndex - 1) * pageSize);
+	        if(pageSize != 0) query.limit(pageSize);
 	        List<DBObject> results =  mongoTemplate.find(query, DBObject.class, collectionName);
 	        
 	        List<JSONObject> jsonResults = new ArrayList<JSONObject>();

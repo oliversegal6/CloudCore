@@ -1,6 +1,7 @@
 package com.xyz.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,13 @@ public class MongoService {
 		 }
 	 }
 	 
-	 public List<JSONObject> findAll(String collectionName) {
+	 public List<JSONObject> findAll(String collectionName, Integer pageIndex, Integer pageSize) {
 		 
-		 return mongoDAO.findAll(collectionName);
+		 return mongoDAO.findAll(collectionName, pageIndex, pageSize);
+	 }
+	 
+	 public List<JSONObject> find(Map<String, String> params, String collectionName) {
+		 
+		 return mongoDAO.find(params, collectionName);
 	 }
 }

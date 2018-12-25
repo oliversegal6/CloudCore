@@ -12,8 +12,8 @@ export class StockMiningServiceService {
 
   getStocks(pageIndex: number = 1, pageSize: number = 10, sortField: string, sortOrder: string, genders: string[]): Observable<{}> {
     let params = new HttpParams()
-    .append('page', `${pageIndex}`)
-    .append('results', `${pageSize}`)
+    .append('pageIndex', `${pageIndex}`)
+    .append('pageSize', `${pageSize}`)
     .append('sortField', sortField)
     .append('sortOrder', sortOrder);
     genders.forEach(gender => {
