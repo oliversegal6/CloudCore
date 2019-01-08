@@ -4,18 +4,46 @@ public class StockDaily {
 
 	String tsCode;
 	String name;
+	String industry;
+	String market;
 	String tradeDate;
 	Float closePrice;
 	Float pctChg;
 	String tradeDateHist;
 	Float closePriceHist;
 	Float pctChgHist;
-	Float totalPctChg;
+	Float profit;
+	Integer totalPctChg;
+	String holders;
 	
-	public Float getTotalPctChg() {
+	public Float getProfit() {
+		return profit;
+	}
+	public void setProfit(Float profit) {
+		this.profit = profit;
+	}
+	public String getIndustry() {
+		return industry;
+	}
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+	public String getMarket() {
+		return market;
+	}
+	public void setMarket(String market) {
+		this.market = market;
+	}
+	public String getHolders() {
+		return holders;
+	}
+	public void setHolders(String holders) {
+		this.holders = holders;
+	}
+	public Integer getTotalPctChg() {
 		return totalPctChg;
 	}
-	public void setTotalPctChg(Float totalPctChg) {
+	public void setTotalPctChg(Integer totalPctChg) {
 		this.totalPctChg = totalPctChg;
 	}
 	public String getTsCode() {

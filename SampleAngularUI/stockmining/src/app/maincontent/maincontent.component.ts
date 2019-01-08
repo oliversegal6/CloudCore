@@ -13,6 +13,7 @@ export class MaincontentComponent implements OnInit {
   pageSize = 10;
   total = 1;
   dataSet = [];
+  histDataSet = [];
   loading = true;
   sortValue = null;
   sortKey = null;
@@ -44,6 +45,22 @@ export class MaincontentComponent implements OnInit {
       console.log(data.results);
     });
   }
+
+  findStocksLower30Percent(reset: boolean = false): void {
+    if (reset) {
+      this.pageIndex = 1;
+    }
+    this.loading = true;
+    this.stockMiningService.findStocksLower30Percent(this.pageIndex, this.pageSize, this.sortKey, this.sortValue, this.searchGenderList).subscribe((data: any) => {
+      this.loading = false;
+      this.total = 200;
+      this.histDataSet = data;
+      console.log(data);
+      console.log(data.results);
+    });
+  }
+
+  
 
   updateFilter(value: string[]): void {
     this.searchGenderList = value;

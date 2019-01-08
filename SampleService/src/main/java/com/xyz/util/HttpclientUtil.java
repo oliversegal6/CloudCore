@@ -68,6 +68,7 @@ public class HttpclientUtil {
         return httpClient;  
     }  
     
+    //curl -X POST -d '{"api_name": "stock_basic", "token": "5dfbbdf5953c683a061952a4a6c7eae376dc2a892ee3ce5ed4117d64", "params": {"list_stauts":"L"}, "fields": "ts_code,name,area,industry,list_date"}' http://api.tushare.pro
     public static List<JsonObject> post(String body, String url) {   
         CloseableHttpClient httpclient = HttpClients.createDefault();    
         HttpPost httppost = new HttpPost(url); 
@@ -101,6 +102,12 @@ public class HttpclientUtil {
                 	}
                 	JsonArray fields = data.getAsJsonObject().get("fields").getAsJsonArray();
                 	JsonArray items = data.getAsJsonObject().get("items").getAsJsonArray();
+                	
+                	if(items.size() == 0) {
+                		logger.info("Query result is empty. Query Body is: " + body);
+                		return new ArrayList<JsonObject>();
+                	}
+                	
                 	List<JsonObject> results = new ArrayList<JsonObject>(); 
                 	for(JsonElement e : items) {
                 		JsonObject g = new JsonObject();

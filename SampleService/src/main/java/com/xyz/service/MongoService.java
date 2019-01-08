@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,8 @@ import com.xyz.dao.MongoDAO;
 @Component
 public class MongoService {
 
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private MongoDAO mongoDAO;
 	
@@ -32,7 +36,7 @@ public class MongoService {
 	 }
 	 
 	 public List<JSONObject> find(Map<String, String> params, String collectionName) {
-		 
+		 logger.info("Query params: " + params);
 		 return mongoDAO.find(params, collectionName);
 	 }
 }

@@ -31,12 +31,12 @@ public class StockMiningController {
     @Autowired
 	private StockMiningService stockMiningService;
     
-    @PostMapping("/stockBasic")
-    public String stockBasic(){
-        logger.info("stockBasic start...");
+    @PostMapping("/saveAllStockBasic")
+    public String saveAllStockBasic(){
+        logger.info("saveAllStockBasic start...");
         stockMiningService.stockBasic();
         
-        return "stockBasic done";
+        return "saveAllStockBasic done";
     }
     
     @PostMapping("/saveDailyBasic")
@@ -63,6 +63,14 @@ public class StockMiningController {
         return "saveAllStockHistData done";
     }
     
+    @PostMapping("/saveStockHistDataFromDate")
+    public String saveStockHistDataFromDate(String date){
+        logger.info("saveStockHistDataFromDate start...");
+        stockMiningService.saveAllStockHistDataByDate(date, null);
+        
+        return "saveAllStockHistData done";
+    }
+    
     @GetMapping("/findAllStocks")
     public Stock[] findAllStocks(@RequestParam("pageIndex") Integer pageIndex, @RequestParam("pageSize") Integer pageSize) {
     	logger.info("findAllStocks start...");
@@ -70,15 +78,23 @@ public class StockMiningController {
     	return results.toArray(new Stock[results.size()]);
     }
     
-    @PostMapping("/saveStockHistData")
-    public String stockHistData(String code){
-        logger.info("saveStockHistData start...");
+    @PostMapping("/saveStockHistDataByDate")
+    public String saveStockHistDataByDate(String date){
+        logger.info("saveStockHistDataByDate start...");
+        stockMiningService.saveStockHistDataByDate(date);
+        
+        return "saveStockHistDataByDate done";
+    }
+    
+    @PostMapping("/saveStockHistDataByCode")
+    public String saveStockHistDataByCode(String code){
+        logger.info("saveStockHistDataByCode start...");
         stockMiningService.saveStockHistDataByCode(code);
         
         return "saveStockHistData done";
     }
     
-    @PostMapping("/findStocksLower30Percent")
+    @GetMapping("/findStocksLower30Percent")
     public StockDaily[] findStocksLower30Percent(){
         logger.info("findStocksLower30Percent start...");
         List<StockDaily> stocks = stockMiningService.findStocksLower30Percent();
