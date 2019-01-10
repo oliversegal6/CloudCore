@@ -22,7 +22,7 @@ export class MaincontentComponent implements OnInit {
   total = 1;
   dataSet = [];
   histDataSet = [];
-  loading = true;
+  loading = false;
   sortValue = null;
   sortKey = null;
   filterGender = [
@@ -59,13 +59,16 @@ export class MaincontentComponent implements OnInit {
       this.pageIndex = 1;
     }
     this.loading = true;
+
+    console.log(this.validateForm.controls.hisDate.value);
+    console.log(this.validateForm.controls.priceChgPercent.value);
+    
     // tslint:disable-next-line:max-line-length
     this.stockMiningService.findStocksLower30Percent(this.pageIndex, this.pageSize, this.sortKey, this.sortValue, this.searchGenderList).subscribe((data: any) => {
       this.loading = false;
       this.total = 200;
       this.histDataSet = data;
       console.log(data);
-      console.log(data.results);
     });
   }
 
@@ -91,8 +94,13 @@ export class MaincontentComponent implements OnInit {
 
     this.validateForm = this.fb.group({
       priceChgPercent : [ null, [ Validators.required ] ],
-      profit : [ null, [ Validators.required ] ]
+      profit : [ null, [ Validators.required ] ],
+      hisDate : [ null, [ Validators.required ] ]
     });
+
+    this.validateForm.controls.hisDate.setValue('2017-7-1');
+    this.validateForm.controls.profit.setValue(0);
+    this.validateForm.controls.priceChgPercent.setValue(80);
   }
 
 }
