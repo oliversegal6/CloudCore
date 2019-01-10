@@ -1,9 +1,36 @@
 <div nz-row nzmargin="10">
-  <div nz-col nzSpan="8">
-    <button nz-button nzType="primary" (click)="findStocksLower30Percent()" >Get Stocks</button>
+  <div nz-col nzSpan="16">
+      <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="priceChgPercent" nzRequired>
+                <span>跌幅<i nz-icon nz-tooltip nzTitle="跌幅大于输入值" type="question-circle" theme="outline"></i>
+                </span>
+              </nz-form-label>
+              <nz-form-control [nzSm]="10" [nzXs]="24">
+                <input nz-input id="priceChgPercent" formControlName="priceChgPercent" placeholder="80">
+                <nz-form-explain *ngIf="validateForm.get('priceChgPercent').dirty && validateForm.get('priceChgPercent').errors">Please input your nickname!</nz-form-explain>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="profit" nzRequired>
+                  <span>净利润<i nz-icon nz-tooltip nzTitle="净利润大于输入值" type="question-circle" theme="outline"></i>
+                  </span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="10" [nzXs]="24">
+                  <input nz-input id="profit" formControlName="profit" placeholder="80">
+                  <nz-form-explain *ngIf="validateForm.get('profit').dirty && validateForm.get('profit').errors">Please input your nickname!</nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+            <nz-form-item nz-row style="margin-bottom:8px;">
+                <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                  <button nz-button nzType="primary" (click)="findStocksLower30Percent()" >Get Stocks</button>
+                </nz-form-control>
+            </nz-form-item>
+    </form>
   </div>
   <div nz-col nzSpan="8" nzOffset="8">
   </div>
+  <br>
 </div>
 <div nz-row>
   <div nz-col nzSpan="24">

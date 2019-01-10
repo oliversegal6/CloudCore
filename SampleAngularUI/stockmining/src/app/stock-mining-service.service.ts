@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class StockMiningServiceService {
 
-  randomUserUrl = 'http://127.0.0.1:8082';
+  randomUserUrl = 'http://106.14.219.109:8082';
 
   getStocks(pageIndex: number = 1, pageSize: number = 10, sortField: string, sortOrder: string, genders: string[]): Observable<{}> {
     let params = new HttpParams()
