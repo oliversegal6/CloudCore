@@ -15,7 +15,28 @@ public class StockDaily {
 	Float profit;
 	Integer totalPctChg;
 	String holders;
+	Boolean hasSheBaoFunder;
+	String selectedConcept;
+	String concepts;
 	
+	public String getConcepts() {
+		return concepts;
+	}
+	public void setConcepts(String concepts) {
+		this.concepts = concepts;
+	}
+	public String getSelectedConcept() {
+		return selectedConcept;
+	}
+	public void setSelectedConcept(String selectedConcept) {
+		this.selectedConcept = selectedConcept;
+	}
+	public Boolean getHasSheBaoFunder() {
+		return hasSheBaoFunder;
+	}
+	public void setHasSheBaoFunder(Boolean hasSheBaoFunder) {
+		this.hasSheBaoFunder = hasSheBaoFunder;
+	}
 	public Float getProfit() {
 		return profit;
 	}

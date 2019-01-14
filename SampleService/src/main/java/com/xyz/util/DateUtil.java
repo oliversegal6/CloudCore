@@ -9,8 +9,9 @@ import java.util.Locale;
 
 public class DateUtil {
 
-	private static final String YYYY_MM_DD = "yyyyMMdd";
-	private static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+	public static final String YYYYMMDD = "yyyyMMdd";
+	public static final String YYYY_MM_DD = "yyyy-MM-dd";
+	public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
 	/** 
 	 * 获取现在时间 
@@ -33,7 +34,7 @@ public class DateUtil {
 	 */  
 	public static Date getNowDateShort() {  
 	    Date currentTime = new Date();  
-	    SimpleDateFormat formatter = new SimpleDateFormat(YYYY_MM_DD);  
+	    SimpleDateFormat formatter = new SimpleDateFormat(YYYYMMDD);  
 	    String dateString = formatter.format(currentTime);  
 	    ParsePosition pos = new ParsePosition(8);  
 	    Date currentTime_2 = formatter.parse(dateString, pos);  
@@ -46,7 +47,7 @@ public class DateUtil {
 	 * @return 返回短时间字符串格式yyyyMMdd 
 	 */  
 	public static String getStringDateShort(Date time) {  
-	    SimpleDateFormat formatter = new SimpleDateFormat(YYYY_MM_DD);  
+	    SimpleDateFormat formatter = new SimpleDateFormat(YYYYMMDD);  
 	    String dateString = formatter.format(time);  
 	    return dateString;  
 	}  
@@ -108,11 +109,17 @@ public class DateUtil {
 	 * @return 
 	 */  
 	public static String dateToStr(java.util.Date dateDate) {  
-	    SimpleDateFormat formatter = new SimpleDateFormat(YYYY_MM_DD);  
+	    SimpleDateFormat formatter = new SimpleDateFormat(YYYYMMDD);  
 	    String dateString = formatter.format(dateDate);  
 	    return dateString;  
 	}  
 	  
+	public static Date strToDate(String strDate, String dateFormat) {  
+		SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);  
+	    ParsePosition pos = new ParsePosition(0);  
+	    Date strtodate = formatter.parse(strDate, pos);  
+	    return strtodate;  
+	}
 	/** 
 	 * 将短时间格式字符串转换为时间 yyyyMMdd 
 	 *  
@@ -120,10 +127,7 @@ public class DateUtil {
 	 * @return 
 	 */  
 	public static Date strToDate(String strDate) {  
-	    SimpleDateFormat formatter = new SimpleDateFormat(YYYY_MM_DD);  
-	    ParsePosition pos = new ParsePosition(0);  
-	    Date strtodate = formatter.parse(strDate, pos);  
-	    return strtodate;  
+		return strToDate(strDate, YYYYMMDD);
 	}  
 	  
 	/** 
@@ -227,7 +231,7 @@ public class DateUtil {
 	 * 得到二个日期间的间隔天数 
 	 */  
 	public static String getTwoDay(String sj1, String sj2) {  
-	    SimpleDateFormat myFormatter = new SimpleDateFormat(YYYY_MM_DD);  
+	    SimpleDateFormat myFormatter = new SimpleDateFormat(YYYYMMDD);  
 	    long day = 0;  
 	    try {  
 	        java.util.Date date = myFormatter.parse(sj1);  
@@ -260,7 +264,7 @@ public class DateUtil {
 	 */  
 	public static String getNextDay(String nowdate, String delay) {  
 	    try {  
-	        SimpleDateFormat format = new SimpleDateFormat(YYYY_MM_DD);  
+	        SimpleDateFormat format = new SimpleDateFormat(YYYYMMDD);  
 	        String mdate = "";  
 	        Date d = strToDate(nowdate);  
 	        long myTime = (d.getTime() / 1000) + Integer.parseInt(delay) * 24  
@@ -306,7 +310,7 @@ public class DateUtil {
 	 * @return 
 	 */  
 	public static String getEDate(String str) {  
-	    SimpleDateFormat formatter = new SimpleDateFormat(YYYY_MM_DD);  
+	    SimpleDateFormat formatter = new SimpleDateFormat(YYYYMMDD);  
 	    ParsePosition pos = new ParsePosition(0);  
 	    Date strtodate = formatter.parse(str, pos);  
 	    String j = strtodate.toString();  
@@ -409,7 +413,7 @@ public class DateUtil {
 	        c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);  
 	    else if (num.equals("0")) // 返回星期日所在的日期  
 	        c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);  
-	    return new SimpleDateFormat(YYYY_MM_DD).format(c.getTime());  
+	    return new SimpleDateFormat(YYYYMMDD).format(c.getTime());  
 	}  
 	  
 	/** 
@@ -463,7 +467,7 @@ public class DateUtil {
 	    if (date2 == null || date2.equals(""))  
 	        return 0;  
 	    // 转换为标准时间  
-	    SimpleDateFormat myFormatter = new SimpleDateFormat(YYYY_MM_DD);  
+	    SimpleDateFormat myFormatter = new SimpleDateFormat(YYYYMMDD);  
 	    java.util.Date date = null;  
 	    java.util.Date mydate = null;  
 	    try {  

@@ -5,6 +5,15 @@ public class Stock {
 	String tsCode;
 	String name;
 	String industry;
+	String market;
+	
+	
+	public String getMarket() {
+		return market;
+	}
+	public void setMarket(String market) {
+		this.market = market;
+	}
 	public String getTsCode() {
 		return tsCode;
 	}

@@ -5,7 +5,8 @@ server:
 spring:
   application:
     name: sampleService
-  data.mongodb.uri: mongodb://172.17.0.1:27017/stockminingnew
+  #data.mongodb.uri: mongodb://172.17.0.1:27017/stockminingnew
+  data.mongodb.uri: mongodb://106.14.219.109:27017/stockminingnew
   
 #eureka.client.serviceUrl.defaultZone: http://localhost:8081/eureka/
 
