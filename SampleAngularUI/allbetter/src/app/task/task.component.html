@@ -1,0 +1,45 @@
+<div class="flex-container">
+    <List [className]="'date-picker-list'">
+      <ListItem
+        DatePicker
+        [extra]="currentDateFormat(taskDate, 'yyyy-mm-dd')"
+        [arrow]="'horizontal'"
+        [mode]="'date'"
+        [(ngModel)]="taskDate"
+        (onOk)="onOk2($event)"
+      >
+        日期
+        <!--<Brief>{{ name2 }}</Brief>-->
+      </ListItem>
+      
+    </List>
+
+    <Accordion [defaultActiveKey]="'0'"
+               [activeKey]="activeKey"
+               (onChange)="onChange($event)"
+    >
+      <AccordionPanel style="background: rgb(106, 201, 238);" *ngFor="let item of accordions; let i = index;"
+                      [key]="i"
+                      [header]="item.title"
+                      [disabled]="item.inactive"
+                      
+      >
+        <List className="my-list">
+            <ListItem *ngFor="let i of checkItemListData" >
+            <CheckboxItem 
+          [name]="i.name"
+          [value]="i.value"
+          [(ngModel)]="i.checked"
+          (onChange)="onChange($event)"
+>
+            {{i.name}}
+          </CheckboxItem>
+  </ListItem>
+  
+          
+        </List>
+      </AccordionPanel>
+      
+    </Accordion>
+  <br>
+</div>

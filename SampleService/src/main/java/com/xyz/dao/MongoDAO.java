@@ -29,6 +29,10 @@ public class MongoDAO {
 	    	Gson gson = new Gson();
 	        mongoTemplate.save((DBObject) JSON.parse(gson.toJson(o)), collectionName);
 	    }
+	    
+	    public void save(JSONObject o, String collectionName) {
+	        mongoTemplate.save((DBObject) JSON.parse(o.toString()), collectionName);
+	    }
 
 	    public Object findOneById(String id, String collectionName) {
 	        Query query=new Query(Criteria.where("id").is(id));

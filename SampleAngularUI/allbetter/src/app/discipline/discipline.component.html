@@ -1,0 +1,42 @@
+<div class="flex-container">
+    <List [className]="'date-picker-list'">
+        <ListItem
+          DatePicker
+          [extra]="currentDateFormat(taskDate, 'yyyy-mm-dd')"
+          [arrow]="'horizontal'"
+          [mode]="'date'"
+          [(ngModel)]="taskDate"
+          (onOk)="onOk2($event)"
+        >
+          日期
+          <!--<Brief>{{ name2 }}</Brief>-->
+        </ListItem>
+      </List>
+      <Accordion [defaultActiveKey]="'0'"
+               [activeKey]="activeKey"
+               (onChange)="onChange($event)"
+    >
+      <AccordionPanel style="background: rgb(106, 201, 238);" *ngFor="let item of accordions; let i = index;"
+                      [key]="i"
+                      [header]="item.title"
+                      [disabled]="item.inactive"
+                      
+      >
+      
+        <List [className]="'my-list'" [renderHeader]=(renderHeader2)  >
+             <ListItem *ngFor="let i of checkItemListData" [extra]="'10:30'" [align]="'top'" [thumb]="'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png'" multipleLine>
+              {{i.name}}
+              
+              <Brief>
+                <InputItem 
+                [clear]="true"
+                [placeholder]="i.desc"
+                [focus]="autoFocus"
+                ></InputItem>
+              </Brief>
+            </ListItem>
+          </List>
+      </AccordionPanel>
+      
+    </Accordion>
+</div>

@@ -30,6 +30,10 @@ public class MongoService {
 		 }
 	 }
 	 
+	 public void save(JSONObject o, String collectionName) {
+		 mongoDAO.save(o, collectionName);
+	 }
+	 
 	 public List<JSONObject> findAll(String collectionName, Integer pageIndex, Integer pageSize) {
 		 
 		 return mongoDAO.findAll(collectionName, pageIndex, pageSize);

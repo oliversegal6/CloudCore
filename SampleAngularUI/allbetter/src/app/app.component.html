@@ -1,0 +1,97 @@
+
+
+<TabBar [barTintColor]="'white'"
+            [tintColor]="tintColor"
+            [unselectedTintColor]="unselectedTintColor"
+            [ngStyle]="tabbarStyle"
+            [activeTab]="1"
+            [hidden]="hidden"
+            [tabBarPosition]="topFlag ? 'top' : 'bottom'"
+    >
+      <TabPane style="background-color: white; text-align: center; height: 100%" [title]='custom1'>
+        <ng-template #custom1>
+          <TabBarTab [title]="'奖励任务'"
+                     [key]="1"
+                     [badge]="1"
+                     [icon]="icon2"
+                     (onPress)="onPress($event)"
+                     [selectedIcon]="icon22"
+          >
+          <ng-template #icon2>
+              <div style="width:22px;height: 22px;background: url('https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg') center center / 21px 21px no-repeat;">
+              </div>
+            </ng-template>
+            <ng-template #icon22>
+              <div style="width:22px;height: 22px;background: url('https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg') center center / 21px 21px no-repeat;">
+              </div>
+            </ng-template>
+          </TabBarTab>
+        </ng-template>
+        <div style="background-color: white; height: 100%; text-align: center">
+          <app-task></app-task>
+        </div>
+      </TabPane>
+      <TabPane style="background-color: white; text-align: center; height: 100%" [title]='custom2'>
+        <ng-template #custom2>
+          <TabBarTab [title]="'家罚'"
+                     [key]="2"
+                     [badge]="'new'"
+                     [icon]="icon2"
+                     [selectedIcon]="icon22"
+          >
+            <ng-template #icon2>
+              <div style="width:22px;height: 22px;background: url('https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg') center center / 21px 21px no-repeat;">
+              </div>
+            </ng-template>
+            <ng-template #icon22>
+              <div style="width:22px;height: 22px;background: url('https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg') center center / 21px 21px no-repeat;">
+              </div>
+            </ng-template>
+          </TabBarTab>
+        </ng-template>
+        <div style="background-color: white; height: 100%; text-align: center">
+          <app-discipline></app-discipline>
+        </div>
+      </TabPane>
+      <TabPane style="background-color: white; text-align: center; height: 100%" [title]='custom3'>
+        <ng-template #custom3>
+          <TabBarTab [title]="'配置'"
+                     [key]="3"
+                     [dot]="true"
+                     [icon]="icon3"
+                     [selectedIcon]="icon33">
+            <ng-template #icon3>
+              <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg') center center / 21px 21px no-repeat;">
+              </div>
+            </ng-template>
+            <ng-template #icon33>
+              <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg') center center / 21px 21px no-repeat;">
+              </div>
+            </ng-template>
+          </TabBarTab>
+        </ng-template>
+        <div style="background-color: white; height: 100%; text-align: center">
+          <div style="padding-top: 60px">Clicked Friend tab， show Friend information</div>
+          <ng-container>
+            <ng-template [ngTemplateOutlet]="content"></ng-template>
+          </ng-container>
+        </div>
+      </TabPane>
+      
+    </TabBar>
+
+    <ng-template #content>
+      <a style="display: block; margin-top: 40px; margin-bottom: 20px; color: #108ee9"
+         (click)="showTabBar($event)">
+        Click to show/hide tab-bar
+      </a>
+      <a style="display: block; margin-top: 20px; margin-bottom: 20px; color: #108ee9"
+         (click)="changePosition($event)">
+        Click to change tab-bar position top/bottom
+      </a>
+      <a style="display: block; margin-bottom: 600px; color: #108ee9"
+      (click)="showFullScreen($event)">
+        Click to switch fullscreen
+      </a>
+    </ng-template>
+
