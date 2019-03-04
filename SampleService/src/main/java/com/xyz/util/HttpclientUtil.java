@@ -47,7 +47,6 @@ public class HttpclientUtil {
     private static int DEFAULTMAXCONNECTION = 5;  
     
     static {  
-        //设置http的状态参数  
         requestConfig = RequestConfig.custom()  
                 .setSocketTimeout(20 * 1000)  
                 .setConnectTimeout(20 * 1000)  
@@ -56,8 +55,8 @@ public class HttpclientUtil {
     
         //HttpHost target = new HttpHost(IP, PORT);  
         connectionManager = new PoolingHttpClientConnectionManager();  
-        connectionManager.setMaxTotal(MAXCONNECTION);//客户端总并行链接最大数  
-        connectionManager.setDefaultMaxPerRoute(DEFAULTMAXCONNECTION);//每个主机的最大并行链接数  
+        connectionManager.setMaxTotal(MAXCONNECTION);
+        connectionManager.setDefaultMaxPerRoute(DEFAULTMAXCONNECTION);
         //connectionManager.setMaxPerRoute(new HttpRoute(target), 20);  
         httpBuilder = HttpClients.custom();  
         httpBuilder.setConnectionManager(connectionManager);  
@@ -72,12 +71,9 @@ public class HttpclientUtil {
     public static List<JsonObject> post(String body, String url) {   
         CloseableHttpClient httpclient = HttpClients.createDefault();    
         HttpPost httppost = new HttpPost(url); 
-        //设置请求的报文头部的编码
         //httppost.setHeader("Content-Type","application/json;charset=utf-8");
         httppost.setHeader("Content-Type","application/json;charset=utf-8");
-        //设置期望服务端返回的编码
         httppost.setHeader("Accept","application/json;charset=utf-8");
-        // 创建参数队列     
         StringEntity reqEntity = new StringEntity(body, "utf-8"); 
         httppost.setEntity(reqEntity);  
         httppost.setConfig(requestConfig);  
@@ -125,7 +121,6 @@ public class HttpclientUtil {
         } catch (Exception e) {   
         	logger.error("tushare error. ", e);
         } finally {   
-            // 关闭连接,释放资源     
             try {   
                 httpclient.close();   
             } catch (IOException e) {   
@@ -147,7 +142,6 @@ public class HttpclientUtil {
 	        map.put("list_status", "L"); 
 	        map.put("fields", "ts_code,name,area,industry,list_date");  
 	        
-	        //发送 POST 请求
 	    	//token:5dfbbdf5953c683a061952a4a6c7eae376dc2a892ee3ce5ed4117d64
 	        //String sr=sendPost("http://api.tushare.pro", 
 	        //		"{\"api_name\": \"stock_basic\", \"token\": \"5dfbbdf5953c683a061952a4a6c7eae376dc2a892ee3ce5ed4117d64\","
