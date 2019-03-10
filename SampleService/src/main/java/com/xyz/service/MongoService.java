@@ -43,4 +43,8 @@ public class MongoService {
 		 logger.info("Query params: " + params);
 		 return mongoDAO.find(params, collectionName);
 	 }
+
+	 public  void dropCollection(String cName){
+	 	mongoDAO.dropCollection(cName);
+	 }
 }

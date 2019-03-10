@@ -10,8 +10,8 @@ import { DatePipe } from '@angular/common';
 
 export class StockMiningServiceService {
 
-  randomUserUrl = 'http://localhost:8082';
-  //randomUserUrl = 'http://106.14.219.109:8082';
+  //randomUserUrl = 'http://localhost:8082';
+  randomUserUrl = 'http://106.14.219.109:8082';
 
   getStocks(pageIndex: number = 1, pageSize: number = 10, sortField: string, sortOrder: string, genders: string[]): Observable<{}> {
     let params = new HttpParams()

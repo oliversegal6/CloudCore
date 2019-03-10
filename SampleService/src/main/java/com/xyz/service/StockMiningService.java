@@ -1,5 +1,9 @@
 package com.xyz.service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -14,6 +18,9 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,27 +60,126 @@ public class StockMiningService {
 	@Autowired
 	private MongoService mongoService;
 
+	/*
+	股票列表基本信息,股票代码,行业。
+	每周六刷新一次, 18点刷新
+	drop -> retrieveAll -> save
+	* */
 	public void stockBasic() {
+		mongoService.dropCollection(STOCK_BASIC);
 		String body = generateQueryBody("stock_basic", "{\"list_stauts\":\"L\"}");
 		mongoService.saveBatch(HttpclientUtil.post(body, HTTP_API_TUSHARE_PRO), STOCK_BASIC);
 	}
 
+	@Value("${python.tushareService.path}")
+	private String tushareServicePath;
+	/*
+    每只股票历史价格涨跌幅等均线数据。
+    每天变动,每天18点刷新
+    retrieveToday's data -> save
+    * */
+	public void saveHistDailyStockByPython(String startDate, String endDate) {
+		String exe = "python";
+//        String command = "/home/oliver/Work/github/stockQuant/tushareService.py";
+
+		String[] cmdArr = new String[]{exe, tushareServicePath, startDate, endDate};
+		Process p = null;
+		try {
+			p = Runtime.getRuntime().exec(cmdArr);
+
+			//获取进程的标准输入流
+			final InputStream is1 = p.getInputStream();
+			//获取进城的错误流
+			final InputStream is2 = p.getErrorStream();
+			//启动两个线程，一个线程负责读标准输出流，另一个负责读标准错误流
+			new Thread() {
+				public void run() {
+					BufferedReader br1 = new BufferedReader(new InputStreamReader(is1));
+					try {
+						String line1 = null;
+						while ((line1 = br1.readLine()) != null) {
+							if (line1 != null) {
+							}
+						}
+						logger.info("errStream:" + line1);
+					} catch (IOException e) {
+						e.printStackTrace();
+					} finally {
+						try {
+							is1.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}.start();
+
+			new Thread() {
+				public void run() {
+					BufferedReader br2 = new BufferedReader(new InputStreamReader(is2));
+					try {
+						String line2 = null;
+						while ((line2 = br2.readLine()) != null) {
+							if (line2 != null) {
+
+							}
+							logger.info("errStream:" + line2);
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					} finally {
+						try {
+							is2.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}.start();
+
+			p.waitFor();
+		} catch (Exception e) {
+			logger.error("saveHistDailyStoc failed", e);
+		} finally {
+			p.destroy();
+		}
+	}
+
+
+	/*
+	股票每天最新的价格和相关信息 如PB,PE,价格等每天都要变动的价格。
+	每天变动,每天18点刷新
+	drop -> retrieveAll -> save
+	* */
 	public void saveDailyBasic(String trade_date) {
+		mongoService.dropCollection(DAILY_BASIC);
 		String body = generateQueryBody("daily_basic", "{\"trade_date\":\"" + trade_date + "\"}");
-		mongoService.saveBatch(HttpclientUtil.post(body, HTTP_API_TUSHARE_PRO), "dailyBasic");
+		mongoService.saveBatch(HttpclientUtil.post(body, HTTP_API_TUSHARE_PRO), DAILY_BASIC);
 	}
-	
+
+	/*
+	概念 如5G，银行。
+	变动比较慢，可以每月第一天18点刷新一次
+	drop -> retrieveAll -> save
+	* */
 	public void saveConcept() {
+		mongoService.dropCollection(CONCEPT);
 		String body = generateQueryBody(CONCEPT, "{}");
-		mongoService.saveBatch(HttpclientUtil.post(body, HTTP_API_TUSHARE_PRO), "concept");
+		mongoService.saveBatch(HttpclientUtil.post(body, HTTP_API_TUSHARE_PRO), CONCEPT);
 	}
-	
+
+	/*
+	每只股票对应概念 如5G，银行。
+	变动比较慢，可以每月第一天18点刷新一次
+	drop -> retrieveAll -> save
+	* */
 	public void saveConceptDetail() {
+		mongoService.dropCollection(CONCEPT_DETAIL);
 		List<JSONObject> stocksJson = mongoService.findAll(CONCEPT, 0, 0);
 		for (JSONObject stockJson : stocksJson) {
 			String code = (String)stockJson.get("code");
 			String body = generateQueryBody("concept_detail", "{\"id\":\"" + code + "\"}");
-			mongoService.saveBatch(HttpclientUtil.post(body, HTTP_API_TUSHARE_PRO), "conceptDetail");
+			mongoService.saveBatch(HttpclientUtil.post(body, HTTP_API_TUSHARE_PRO), CONCEPT_DETAIL);
 			logger.info("saveConceptDetail for " + code);
 		}
 	}
@@ -135,14 +241,25 @@ public class StockMiningService {
 		logger.info("saveStockHistData for " + code + " size: " + res.size());
 	}
 
+	/*
+	每只股票10大流通股东。
+	变动比较慢，可以每季度刷新一次
+	drop -> retrieveAll -> save
+	* */
 	public void saveAllTop10Floatholders() {
+		mongoService.dropCollection(TOP10_FLOATHOLDERS);
 		List<Stock> allStocks = findAllStocks(0, 0);
 		for (Stock stock : allStocks) {
 			String code = stock.getTsCode();
 			saveDataRangeQueryWithCodeAndDate("top10_floatholders", TOP10_FLOATHOLDERS, code);
 		}
 	}
-	
+
+	/*
+	每只股票季报。
+	变动比较慢，可以每季度刷新一次
+	retrieveLastQuarter -> save
+	* */
 	public void saveFinaIndicator() {
 		List<Stock> allStocks = findAllStocks(0, 0);
 		for (Stock stock : allStocks) {
@@ -273,6 +390,7 @@ public class StockMiningService {
 			List<JSONObject> holders = allTop10Holders.get(stock.getTsCode());
 			if (holders == null) {
 				logger.warn("Top10Holders missing for " + stock.getTsCode());
+				continue;
 			}
 
 			for (JSONObject holder : holders) {
@@ -325,7 +443,7 @@ public class StockMiningService {
 			JSONObject stocksBasicProfit = stocksBasicProfits.get(stock.getTsCode());
 			if(stocksBasicProfit == null)
 				continue;
-			String netprofitYoy = stocksBasicProfit.get("netprofit_yoy") == null ? "-1" : (String)stocksBasicProfit.get("netprofit_yoy");
+			String netprofitYoy = StringUtils.isBlank((String) stocksBasicProfit.get("netprofit_yoy")) ? "-1" : (String)stocksBasicProfit.get("netprofit_yoy");
 			Float currProfit = Float.valueOf( netprofitYoy);
 			if(currProfit > profit) {
 				stock.setProfit(currProfit);;
@@ -349,22 +467,26 @@ public class StockMiningService {
 		Calendar calendar = Calendar.getInstance();
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
-		List<JSONObject> currentDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+		String dynTableName = STOCK_HIST_DATA + "_" + params.get("trade_date").substring(0, 4);
+		List<JSONObject> currentDailyStocks = mongoService.find(params, dynTableName);
 
 		while (currentDailyStocks.size() == 0) {
-			calendar.add(Calendar.DAY_OF_MONTH, -3);
+			calendar.add(Calendar.DAY_OF_MONTH, -1);
 			params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
-			currentDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+			dynTableName = STOCK_HIST_DATA + "_" + params.get("trade_date").substring(0, 4);
+			currentDailyStocks = mongoService.find(params, dynTableName);
 		}
 
 		Date strToDate = DateUtil.strToDate(tradeDateHistParam);
 		calendar.setTime(strToDate);
 		params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
-		List<JSONObject> histDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+		dynTableName = STOCK_HIST_DATA + "_" + params.get("trade_date").substring(0, 4);
+		List<JSONObject> histDailyStocks = mongoService.find(params, dynTableName);
 		while (histDailyStocks.size() == 0) {
-			calendar.add(Calendar.DAY_OF_MONTH, 5);
+			calendar.add(Calendar.DAY_OF_MONTH, 3);
 			params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
-			histDailyStocks = mongoService.find(params, STOCK_HIST_DATA);
+			dynTableName = STOCK_HIST_DATA + "_" + params.get("trade_date").substring(0, 4);
+			histDailyStocks = mongoService.find(params, dynTableName);
 		}
 
 		Map<String, JSONObject> currentDailyStocksMap = new HashMap<String, JSONObject>();
@@ -388,10 +510,19 @@ public class StockMiningService {
 			Float histPrice = histDailyStock.getFloat("close");
 			//Float profit = (float) 100.0;//stockProfit.getFloat("profit");
 			
-			Float totalPctChg = histPrice / currentPrice - 1;
-			float pctChgBenchMark = totalPctChgParam.floatValue()/100;
-			if (totalPctChg < pctChgBenchMark)
-				continue;
+			Float totalPctChg = 0f;
+			if(totalPctChgParam < 0) {//跌幅大于%
+				totalPctChg = histPrice / currentPrice - 1;
+				float pctChgBenchMark = ((Integer)Math.abs(totalPctChgParam)).floatValue()/100;
+				if (totalPctChg < pctChgBenchMark)
+					continue;
+			} else {//涨幅小于%
+				totalPctChg = currentPrice / histPrice  - 1;
+				float pctChgBenchMark = totalPctChgParam.floatValue()/100;
+				if (totalPctChg > pctChgBenchMark)
+					continue;
+			}
+			
 
 			StockDaily stock = new StockDaily();
 			stock.setTsCode(stockJson.getTsCode());
@@ -414,14 +545,7 @@ public class StockMiningService {
 		if(daily.getHasSheBaoFunder())
 			stocks = getAllHoldersContainsHuijin(stocks);
 		
-		
-		stocks
-				.sort((StockDaily h1, StockDaily h2) -> h1.getTotalPctChg().compareTo(h2.getTotalPctChg()));
-		// Collections.sort(allHoldersContainsHuijin,
-		// Comparator.comparing(StockDaily::getTotalPctChg));
-		// Comparator<StockDaily> comparator = (h1, h2) ->
-		// h1.getTotalPctChg().compareTo(h2.getTotalPctChg());
-		// allHoldersContainsHuijin.sort(comparator.reversed());
+		stocks.sort((StockDaily h1, StockDaily h2) -> h1.getTotalPctChg().compareTo(h2.getTotalPctChg()));
 		stocks.sort(Comparator.comparing(StockDaily::getTotalPctChg).reversed());
 		logger.info("result count: " + stocks.size());
 		return stocks;
@@ -437,5 +561,18 @@ public class StockMiningService {
 		String body = "{\"api_name\": \"" + apiName + "\", \"token\": \"" + HTTP_API_TOKEN + "\", \"params\": " + param
 				+ "}";
 		return body;
+	}
+
+	@Autowired
+	private JavaMailSender mailSender;
+
+	public void sendSimpleMail() throws Exception {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("dyc87112@qq.com");
+		message.setTo("dyc87112@qq.com");
+		message.setSubject("主题：简单邮件");
+		message.setText("测试邮件内容");
+
+		mailSender.send(message);
 	}
 }

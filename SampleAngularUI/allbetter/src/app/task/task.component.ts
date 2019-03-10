@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task',
@@ -20,9 +21,11 @@ export class TaskComponent implements OnInit {
 
   activeKey = [0, 1];
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    console.log(this.taskDate);
+    this.initData(this.currentDateFormat(this.taskDate, 'yyyymmdd'))
   }
 
   // locale = en_US;
@@ -35,6 +38,34 @@ export class TaskComponent implements OnInit {
 
   value = [];
   taskDate = new Date();
+
+  dailyTasks = [];
+  users = [];
+  loading = false;
+
+  findDailyTask(date:String): void {
+
+    this.taskService.findDailyTask(date).subscribe((data: any) => {
+      this.loading = false;
+      this.dailyTasks = data;
+      console.log(this.dailyTasks);
+    });
+  }
+
+  findUser(): void {
+
+    this.taskService.findUser().subscribe((data: any) => {
+      this.loading = false;
+      this.users = data;
+      console.log(this.users);
+    });
+  }
+
+  initData(date:String): void {
+    this.findUser();
+    this.findDailyTask(date);
+    
+  }
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM'): any {
     const pad = (n: number): string => (n < 10 ? `0${n}` : n.toString());
@@ -51,9 +82,11 @@ export class TaskComponent implements OnInit {
     console.log(event);
   }
 
-  onOk2(result) {
-    //this.name2 = this.currentDateFormat(result, 'yyyy-mm-dd');
+  onDateChange(result) {
+    //this.taskDate = this.currentDateFormat(result, 'yyyymmdd');
     this.taskDate = result;
+    console.log(this.taskDate);
+    this.initData(this.currentDateFormat(this.taskDate, 'yyyymmdd'))
   }
 
   formatIt(date: Date, form: string) {

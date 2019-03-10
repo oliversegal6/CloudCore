@@ -1,5 +1,6 @@
 package com.xyz.controller;
 
+import com.xyz.service.StockMiningScheduledJob;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +35,15 @@ public class StockMiningController {
 
     @Autowired
 	private StockMiningService stockMiningService;
-    
+
+    @Autowired
+    private StockMiningScheduledJob stockMiningScheduledJob;
+
+    @PostMapping("/saveTodayDailyStock")
+    public void saveTodayDailyStock(){
+        stockMiningScheduledJob.saveTodayDailyStock();
+    }
+
     @PostMapping("/saveAllStockBasic")
     public String saveAllStockBasic(){
         logger.info("saveAllStockBasic start...");
@@ -41,12 +51,11 @@ public class StockMiningController {
         
         return "saveAllStockBasic done";
     }
-    
+
     @PostMapping("/saveDailyBasic")
     public String saveDailyBasic(String trade_date){
         logger.info("saveDailyBasic start..." + trade_date);
         stockMiningService.saveDailyBasic(trade_date);
-        
         return "saveDailyBasic done";
     }
     
@@ -84,11 +93,17 @@ public class StockMiningController {
     
     @PostMapping("/saveAllStockHistData")
     public String saveAllStockHistData(){
-        logger.info("saveAllStockHistData start...");
         stockMiningService.saveAllStockHistDataByDate("20160101", null);
         
         return "saveAllStockHistData done";
     }
+
+    @PostMapping("/saveStockHistDataByYear")
+    public String saveStockHistDataByYear(String year) {
+        stockMiningService.saveHistDailyStockByPython(year + "0101", year + "1231");
+        return "saveStockHistDataByYear done";
+    }
+
     
     @PostMapping("/saveStockHistDataFromDate")
     public String saveStockHistDataFromDate(String date){

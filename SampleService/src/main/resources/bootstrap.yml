@@ -7,7 +7,32 @@ spring:
     name: sampleService
   #data.mongodb.uri: mongodb://172.17.0.1:27017/stockminingnew
   data.mongodb.uri: mongodb://106.14.219.109:27017/stockminingnew
-  
+  profiles:
+    active: local
+
+spring.aop.auto: true # Add @EnableAspectJAutoProxy.
+spring.aop.proxy-target-class: false # Whether subclass-based (CGLIB) proxies are to be created (true) as opposed to standard Java interface-based proxies (false).
 #eureka.client.serviceUrl.defaultZone: http://localhost:8081/eureka/
 
 management.security.enabled: false
+
+spring.mail.host: smtp.qq.com
+spring.mail.username: 用户名  #发送方的邮箱
+spring.mail.password: 密码  #对于qq邮箱而言 密码指的就是发送方的授权码
+spring.mail.properties.mail.smtp.auth: true
+spring.mail.properties.mail.smtp.starttls.enable: true
+spring.mail.properties.mail.smtp.starttls.required: true
+
+---
+spring:
+  profiles: local
+
+python.tushareService.path: /home/oliver/Work/github/stockQuant/tushareService.py
+
+
+---
+spring:
+     profiles: ali
+
+python.tushareService.path: /home/oliver/stockQuant/tushareService.py
+

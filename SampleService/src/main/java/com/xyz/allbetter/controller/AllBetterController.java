@@ -22,6 +22,7 @@ import com.xyz.allbetter.model.DailyDiscipline;
 import com.xyz.allbetter.model.DailyTask;
 import com.xyz.allbetter.model.Discipline;
 import com.xyz.allbetter.model.Task;
+import com.xyz.allbetter.model.User;
 import com.xyz.allbetter.model.UserTasks;
 import com.xyz.allbetter.service.AllBetterService;
 import com.xyz.dao.MongoDAO;
@@ -39,6 +40,23 @@ public class AllBetterController {
 
     @Autowired
 	private AllBetterService allBetterService;
+    
+    @PostMapping("/saveUser")
+    public String saveUser(User User){
+        logger.info("saveUser start...");
+        allBetterService.saveUser(User);
+        
+        return "saveUser done";
+    }
+    
+    
+    @GetMapping("/findUser")
+    public User[] findUser(User params) {
+    	logger.info("findUser start...");
+    	
+    	List<User> results = allBetterService.findUser(params);
+    	return results.toArray(new User[results.size()]);
+    }
     
     @PostMapping("/saveTask")
     public String saveTask(Task task){
@@ -84,7 +102,7 @@ public class AllBetterController {
     
     
     @GetMapping("/findDailyTask")
-    public DailyTask[] findDailyTask(@RequestParam DailyTask params) {
+    public DailyTask[] findDailyTask(DailyTask params) {
     	logger.info("findDailyTask start...");
     	
     	List<DailyTask> results = allBetterService.findDailyTask(params);

@@ -8,20 +8,19 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>xyz-sub</groupId>
-    <version>1.0</version>
+
     <artifactId>CloudCore-EurekaServer</artifactId>
 
 
     <dependencies>
-       <dependency>
-	      <groupId>org.springframework.cloud</groupId>
-	      <artifactId>spring-cloud-starter</artifactId>
-	    </dependency>
-	    <dependency>
-	      <groupId>org.springframework.cloud</groupId>
-	      <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-	    </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-netflix-eureka-server</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -6,7 +6,7 @@
         [arrow]="'horizontal'"
         [mode]="'date'"
         [(ngModel)]="taskDate"
-        (onOk)="onOk2($event)"
+        (onOk)="onDateChange($event)"
       >
         日期
         <!--<Brief>{{ name2 }}</Brief>-->
@@ -18,25 +18,25 @@
                [activeKey]="activeKey"
                (onChange)="onChange($event)"
     >
-      <AccordionPanel style="background: rgb(106, 201, 238);" *ngFor="let item of accordions; let i = index;"
+      <AccordionPanel style="background: rgb(106, 201, 238);" *ngFor="let user of users; let i = index;"
                       [key]="i"
-                      [header]="item.title"
-                      [disabled]="item.inactive"
+                      [header]="user.name"
+                      [disabled]="user.inactive"
                       
       >
         <List className="my-list">
-            <ListItem *ngFor="let i of checkItemListData" >
+          <ng-container *ngFor="let i of dailyTasks">
+              
+          <ListItem *ngIf="i.targetUser == user.id" >
             <CheckboxItem 
-          [name]="i.name"
-          [value]="i.value"
-          [(ngModel)]="i.checked"
-          (onChange)="onChange($event)"
->
-            {{i.name}}
-          </CheckboxItem>
-  </ListItem>
-  
-          
+              [id]="i.id"
+              [value]="i.taskName"
+              [(ngModel)]="i.checked"
+              (onChange)="onChange($event)">
+                {{i.taskName}}
+              </CheckboxItem>
+          </ListItem>
+        </ng-container>
         </List>
       </AccordionPanel>
       

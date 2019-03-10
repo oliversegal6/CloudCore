@@ -5,8 +5,22 @@ public class DailyTask extends BaseModel{
 	String id;
 	String date;
 	String taskId;
+	String taskName;
 	String targetUser;
+	Boolean checked;
 	
+	public String getTaskName() {
+		return taskName;
+	}
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+	public Boolean getChecked() {
+		return checked;
+	}
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
 	public String getTargetUser() {
 		return targetUser;
 	}

@@ -1,0 +1,478 @@
+2019-03-08 00:50:00,789 - __main__ - INFO - 1.2.20
+2019-03-08 00:50:05,843 - __main__ - INFO - count 1
+2019-03-08 00:50:05,843 - __main__ - INFO - code is 000001.SZ
+2019-03-08 00:50:05,843 - __main__ - INFO - code is 000001.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:06,457 - __main__ - INFO - count 2
+2019-03-08 00:50:06,457 - __main__ - INFO - code is 000002.SZ
+2019-03-08 00:50:06,457 - __main__ - INFO - code is 000002.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:07,012 - __main__ - INFO - count 3
+2019-03-08 00:50:07,012 - __main__ - INFO - code is 000004.SZ
+2019-03-08 00:50:07,012 - __main__ - INFO - code is 000004.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:07,549 - __main__ - INFO - count 4
+2019-03-08 00:50:07,549 - __main__ - INFO - code is 000005.SZ
+2019-03-08 00:50:07,549 - __main__ - INFO - code is 000005.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:08,119 - __main__ - INFO - count 5
+2019-03-08 00:50:08,119 - __main__ - INFO - code is 000006.SZ
+2019-03-08 00:50:08,119 - __main__ - INFO - code is 000006.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:08,710 - __main__ - INFO - count 6
+2019-03-08 00:50:08,710 - __main__ - INFO - code is 000007.SZ
+2019-03-08 00:50:08,710 - __main__ - INFO - code is 000007.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:09,274 - __main__ - INFO - count 7
+2019-03-08 00:50:09,275 - __main__ - INFO - code is 000008.SZ
+2019-03-08 00:50:09,275 - __main__ - INFO - code is 000008.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:09,790 - __main__ - INFO - count 8
+2019-03-08 00:50:09,791 - __main__ - INFO - code is 000009.SZ
+2019-03-08 00:50:09,791 - __main__ - INFO - code is 000009.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:10,300 - __main__ - INFO - count 9
+2019-03-08 00:50:10,301 - __main__ - INFO - code is 000010.SZ
+2019-03-08 00:50:10,301 - __main__ - INFO - code is 000010.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:10,840 - __main__ - INFO - count 10
+2019-03-08 00:50:10,840 - __main__ - INFO - code is 000011.SZ
+2019-03-08 00:50:10,840 - __main__ - INFO - code is 000011.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:11,385 - __main__ - INFO - count 11
+2019-03-08 00:50:11,385 - __main__ - INFO - code is 000012.SZ
+2019-03-08 00:50:11,386 - __main__ - INFO - code is 000012.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:11,927 - __main__ - INFO - count 12
+2019-03-08 00:50:11,928 - __main__ - INFO - code is 000014.SZ
+2019-03-08 00:50:11,928 - __main__ - INFO - code is 000014.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:12,512 - __main__ - INFO - count 13
+2019-03-08 00:50:12,512 - __main__ - INFO - code is 000016.SZ
+2019-03-08 00:50:12,512 - __main__ - INFO - code is 000016.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:13,047 - __main__ - INFO - count 14
+2019-03-08 00:50:13,047 - __main__ - INFO - code is 000017.SZ
+2019-03-08 00:50:13,048 - __main__ - INFO - code is 000017.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:13,616 - __main__ - INFO - count 15
+2019-03-08 00:50:13,617 - __main__ - INFO - code is 000018.SZ
+2019-03-08 00:50:13,617 - __main__ - INFO - code is 000018.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:14,176 - __main__ - INFO - count 16
+2019-03-08 00:50:14,177 - __main__ - INFO - code is 000019.SZ
+2019-03-08 00:50:14,177 - __main__ - INFO - code is 000019.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:14,675 - __main__ - INFO - count 17
+2019-03-08 00:50:14,675 - __main__ - INFO - code is 000020.SZ
+2019-03-08 00:50:14,675 - __main__ - INFO - code is 000020.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:15,200 - __main__ - INFO - count 18
+2019-03-08 00:50:15,201 - __main__ - INFO - code is 000021.SZ
+2019-03-08 00:50:15,201 - __main__ - INFO - code is 000021.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:15,730 - __main__ - INFO - count 19
+2019-03-08 00:50:15,730 - __main__ - INFO - code is 000022.SZ
+2019-03-08 00:50:15,730 - __main__ - INFO - code is 000022.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:16,152 - __main__ - INFO - Can not find hist data for 000022.SZ
+2019-03-08 00:50:16,152 - __main__ - INFO - count 20
+2019-03-08 00:50:16,154 - __main__ - INFO - code is 000023.SZ
+2019-03-08 00:50:16,154 - __main__ - INFO - code is 000023.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:16,616 - __main__ - INFO - count 21
+2019-03-08 00:50:16,616 - __main__ - INFO - code is 000025.SZ
+2019-03-08 00:50:16,617 - __main__ - INFO - code is 000025.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:17,190 - __main__ - INFO - count 22
+2019-03-08 00:50:17,190 - __main__ - INFO - code is 000026.SZ
+2019-03-08 00:50:17,190 - __main__ - INFO - code is 000026.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:17,741 - __main__ - INFO - count 23
+2019-03-08 00:50:17,741 - __main__ - INFO - code is 000027.SZ
+2019-03-08 00:50:17,741 - __main__ - INFO - code is 000027.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:18,289 - __main__ - INFO - count 24
+2019-03-08 00:50:18,290 - __main__ - INFO - code is 000028.SZ
+2019-03-08 00:50:18,290 - __main__ - INFO - code is 000028.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:18,820 - __main__ - INFO - count 25
+2019-03-08 00:50:18,820 - __main__ - INFO - code is 000029.SZ
+2019-03-08 00:50:18,820 - __main__ - INFO - code is 000029.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:19,263 - __main__ - INFO - count 26
+2019-03-08 00:50:19,263 - __main__ - INFO - code is 000030.SZ
+2019-03-08 00:50:19,264 - __main__ - INFO - code is 000030.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:19,760 - __main__ - INFO - count 27
+2019-03-08 00:50:19,761 - __main__ - INFO - code is 000031.SZ
+2019-03-08 00:50:19,761 - __main__ - INFO - code is 000031.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:20,357 - __main__ - INFO - count 28
+2019-03-08 00:50:20,358 - __main__ - INFO - code is 000032.SZ
+2019-03-08 00:50:20,358 - __main__ - INFO - code is 000032.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:20,877 - __main__ - INFO - count 29
+2019-03-08 00:50:20,878 - __main__ - INFO - code is 000034.SZ
+2019-03-08 00:50:20,878 - __main__ - INFO - code is 000034.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:21,391 - __main__ - INFO - count 30
+2019-03-08 00:50:21,392 - __main__ - INFO - code is 000035.SZ
+2019-03-08 00:50:21,393 - __main__ - INFO - code is 000035.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:21,939 - __main__ - INFO - count 31
+2019-03-08 00:50:21,940 - __main__ - INFO - code is 000036.SZ
+2019-03-08 00:50:21,940 - __main__ - INFO - code is 000036.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:22,511 - __main__ - INFO - count 32
+2019-03-08 00:50:22,511 - __main__ - INFO - code is 000037.SZ
+2019-03-08 00:50:22,511 - __main__ - INFO - code is 000037.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:23,052 - __main__ - INFO - count 33
+2019-03-08 00:50:23,052 - __main__ - INFO - code is 000038.SZ
+2019-03-08 00:50:23,052 - __main__ - INFO - code is 000038.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:23,602 - __main__ - INFO - count 34
+2019-03-08 00:50:23,603 - __main__ - INFO - code is 000039.SZ
+2019-03-08 00:50:23,603 - __main__ - INFO - code is 000039.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:24,211 - __main__ - INFO - count 35
+2019-03-08 00:50:24,212 - __main__ - INFO - code is 000040.SZ
+2019-03-08 00:50:24,212 - __main__ - INFO - code is 000040.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:24,724 - __main__ - INFO - count 36
+2019-03-08 00:50:24,724 - __main__ - INFO - code is 000042.SZ
+2019-03-08 00:50:24,724 - __main__ - INFO - code is 000042.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:25,274 - __main__ - INFO - count 37
+2019-03-08 00:50:25,274 - __main__ - INFO - code is 000043.SZ
+2019-03-08 00:50:25,274 - __main__ - INFO - code is 000043.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:25,826 - __main__ - INFO - count 38
+2019-03-08 00:50:25,826 - __main__ - INFO - code is 000045.SZ
+2019-03-08 00:50:25,826 - __main__ - INFO - code is 000045.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:26,327 - __main__ - INFO - count 39
+2019-03-08 00:50:26,327 - __main__ - INFO - code is 000046.SZ
+2019-03-08 00:50:26,328 - __main__ - INFO - code is 000046.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:26,871 - __main__ - INFO - count 40
+2019-03-08 00:50:26,872 - __main__ - INFO - code is 000048.SZ
+2019-03-08 00:50:26,874 - __main__ - INFO - code is 000048.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:27,391 - __main__ - INFO - count 41
+2019-03-08 00:50:27,392 - __main__ - INFO - code is 000049.SZ
+2019-03-08 00:50:27,392 - __main__ - INFO - code is 000049.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:27,941 - __main__ - INFO - count 42
+2019-03-08 00:50:27,942 - __main__ - INFO - code is 000050.SZ
+2019-03-08 00:50:27,942 - __main__ - INFO - code is 000050.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:28,494 - __main__ - INFO - count 43
+2019-03-08 00:50:28,494 - __main__ - INFO - code is 000055.SZ
+2019-03-08 00:50:28,494 - __main__ - INFO - code is 000055.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:29,061 - __main__ - INFO - count 44
+2019-03-08 00:50:29,062 - __main__ - INFO - code is 000056.SZ
+2019-03-08 00:50:29,062 - __main__ - INFO - code is 000056.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:29,565 - __main__ - INFO - count 45
+2019-03-08 00:50:29,566 - __main__ - INFO - code is 000058.SZ
+2019-03-08 00:50:29,566 - __main__ - INFO - code is 000058.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:30,130 - __main__ - INFO - count 46
+2019-03-08 00:50:30,131 - __main__ - INFO - code is 000059.SZ
+2019-03-08 00:50:30,131 - __main__ - INFO - code is 000059.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:30,661 - __main__ - INFO - count 47
+2019-03-08 00:50:30,661 - __main__ - INFO - code is 000060.SZ
+2019-03-08 00:50:30,661 - __main__ - INFO - code is 000060.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:31,205 - __main__ - INFO - count 48
+2019-03-08 00:50:31,205 - __main__ - INFO - code is 000061.SZ
+2019-03-08 00:50:31,205 - __main__ - INFO - code is 000061.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:31,737 - __main__ - INFO - count 49
+2019-03-08 00:50:31,737 - __main__ - INFO - code is 000062.SZ
+2019-03-08 00:50:31,737 - __main__ - INFO - code is 000062.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:32,275 - __main__ - INFO - count 50
+2019-03-08 00:50:32,275 - __main__ - INFO - code is 000063.SZ
+2019-03-08 00:50:32,277 - __main__ - INFO - code is 000063.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:32,826 - __main__ - INFO - count 51
+2019-03-08 00:50:32,826 - __main__ - INFO - code is 000065.SZ
+2019-03-08 00:50:32,826 - __main__ - INFO - code is 000065.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:33,366 - __main__ - INFO - count 52
+2019-03-08 00:50:33,367 - __main__ - INFO - code is 000066.SZ
+2019-03-08 00:50:33,367 - __main__ - INFO - code is 000066.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:33,928 - __main__ - INFO - count 53
+2019-03-08 00:50:33,928 - __main__ - INFO - code is 000068.SZ
+2019-03-08 00:50:33,929 - __main__ - INFO - code is 000068.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:34,483 - __main__ - INFO - count 54
+2019-03-08 00:50:34,484 - __main__ - INFO - code is 000069.SZ
+2019-03-08 00:50:34,484 - __main__ - INFO - code is 000069.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:35,019 - __main__ - INFO - count 55
+2019-03-08 00:50:35,019 - __main__ - INFO - code is 000070.SZ
+2019-03-08 00:50:35,020 - __main__ - INFO - code is 000070.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:35,594 - __main__ - INFO - count 56
+2019-03-08 00:50:35,594 - __main__ - INFO - code is 000078.SZ
+2019-03-08 00:50:35,595 - __main__ - INFO - code is 000078.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:36,140 - __main__ - INFO - count 57
+2019-03-08 00:50:36,140 - __main__ - INFO - code is 000088.SZ
+2019-03-08 00:50:36,140 - __main__ - INFO - code is 000088.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:36,722 - __main__ - INFO - count 58
+2019-03-08 00:50:36,722 - __main__ - INFO - code is 000089.SZ
+2019-03-08 00:50:36,722 - __main__ - INFO - code is 000089.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:37,276 - __main__ - INFO - count 59
+2019-03-08 00:50:37,276 - __main__ - INFO - code is 000090.SZ
+2019-03-08 00:50:37,277 - __main__ - INFO - code is 000090.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:37,819 - __main__ - INFO - count 60
+2019-03-08 00:50:37,820 - __main__ - INFO - code is 000096.SZ
+2019-03-08 00:50:37,820 - __main__ - INFO - code is 000096.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:38,385 - __main__ - INFO - count 61
+2019-03-08 00:50:38,385 - __main__ - INFO - code is 000099.SZ
+2019-03-08 00:50:38,386 - __main__ - INFO - code is 000099.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:38,933 - __main__ - INFO - count 62
+2019-03-08 00:50:38,933 - __main__ - INFO - code is 000100.SZ
+2019-03-08 00:50:38,933 - __main__ - INFO - code is 000100.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:39,517 - __main__ - INFO - count 63
+2019-03-08 00:50:39,518 - __main__ - INFO - code is 000150.SZ
+2019-03-08 00:50:39,518 - __main__ - INFO - code is 000150.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:40,060 - __main__ - INFO - count 64
+2019-03-08 00:50:40,061 - __main__ - INFO - code is 000151.SZ
+2019-03-08 00:50:40,061 - __main__ - INFO - code is 000151.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:40,595 - __main__ - INFO - count 65
+2019-03-08 00:50:40,596 - __main__ - INFO - code is 000153.SZ
+2019-03-08 00:50:40,596 - __main__ - INFO - code is 000153.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:41,165 - __main__ - INFO - count 66
+2019-03-08 00:50:41,166 - __main__ - INFO - code is 000155.SZ
+2019-03-08 00:50:41,168 - __main__ - INFO - code is 000155.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:41,722 - __main__ - INFO - count 67
+2019-03-08 00:50:41,723 - __main__ - INFO - code is 000156.SZ
+2019-03-08 00:50:41,723 - __main__ - INFO - code is 000156.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:42,250 - __main__ - INFO - count 68
+2019-03-08 00:50:42,251 - __main__ - INFO - code is 000157.SZ
+2019-03-08 00:50:42,251 - __main__ - INFO - code is 000157.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:42,808 - __main__ - INFO - count 69
+2019-03-08 00:50:42,808 - __main__ - INFO - code is 000158.SZ
+2019-03-08 00:50:42,809 - __main__ - INFO - code is 000158.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:43,447 - __main__ - INFO - count 70
+2019-03-08 00:50:43,447 - __main__ - INFO - code is 000159.SZ
+2019-03-08 00:50:43,447 - __main__ - INFO - code is 000159.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:43,979 - __main__ - INFO - count 71
+2019-03-08 00:50:43,980 - __main__ - INFO - code is 000166.SZ
+2019-03-08 00:50:43,980 - __main__ - INFO - code is 000166.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:44,532 - __main__ - INFO - count 72
+2019-03-08 00:50:44,532 - __main__ - INFO - code is 000301.SZ
+2019-03-08 00:50:44,532 - __main__ - INFO - code is 000301.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:45,121 - __main__ - INFO - count 73
+2019-03-08 00:50:45,121 - __main__ - INFO - code is 000333.SZ
+2019-03-08 00:50:45,122 - __main__ - INFO - code is 000333.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:45,689 - __main__ - INFO - count 74
+2019-03-08 00:50:45,690 - __main__ - INFO - code is 000338.SZ
+2019-03-08 00:50:45,690 - __main__ - INFO - code is 000338.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:46,284 - __main__ - INFO - count 75
+2019-03-08 00:50:46,285 - __main__ - INFO - code is 000400.SZ
+2019-03-08 00:50:46,286 - __main__ - INFO - code is 000400.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:46,872 - __main__ - INFO - count 76
+2019-03-08 00:50:46,872 - __main__ - INFO - code is 000401.SZ
+2019-03-08 00:50:46,872 - __main__ - INFO - code is 000401.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:47,410 - __main__ - INFO - count 77
+2019-03-08 00:50:47,410 - __main__ - INFO - code is 000402.SZ
+2019-03-08 00:50:47,410 - __main__ - INFO - code is 000402.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:47,957 - __main__ - INFO - count 78
+2019-03-08 00:50:47,958 - __main__ - INFO - code is 000403.SZ
+2019-03-08 00:50:47,958 - __main__ - INFO - code is 000403.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:48,511 - __main__ - INFO - count 79
+2019-03-08 00:50:48,512 - __main__ - INFO - code is 000404.SZ
+2019-03-08 00:50:48,512 - __main__ - INFO - code is 000404.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:49,078 - __main__ - INFO - count 80
+2019-03-08 00:50:49,078 - __main__ - INFO - code is 000407.SZ
+2019-03-08 00:50:49,078 - __main__ - INFO - code is 000407.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:49,627 - __main__ - INFO - count 81
+2019-03-08 00:50:49,627 - __main__ - INFO - code is 000408.SZ
+2019-03-08 00:50:49,627 - __main__ - INFO - code is 000408.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:50,187 - __main__ - INFO - count 82
+2019-03-08 00:50:50,188 - __main__ - INFO - code is 000409.SZ
+2019-03-08 00:50:50,188 - __main__ - INFO - code is 000409.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:50,702 - __main__ - INFO - count 83
+2019-03-08 00:50:50,702 - __main__ - INFO - code is 000410.SZ
+2019-03-08 00:50:50,703 - __main__ - INFO - code is 000410.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:51,245 - __main__ - INFO - count 84
+2019-03-08 00:50:51,246 - __main__ - INFO - code is 000411.SZ
+2019-03-08 00:50:51,246 - __main__ - INFO - code is 000411.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:51,816 - __main__ - INFO - count 85
+2019-03-08 00:50:51,816 - __main__ - INFO - code is 000413.SZ
+2019-03-08 00:50:51,818 - __main__ - INFO - code is 000413.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:52,331 - __main__ - INFO - count 86
+2019-03-08 00:50:52,332 - __main__ - INFO - code is 000415.SZ
+2019-03-08 00:50:52,332 - __main__ - INFO - code is 000415.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:52,901 - __main__ - INFO - count 87
+2019-03-08 00:50:52,902 - __main__ - INFO - code is 000416.SZ
+2019-03-08 00:50:52,902 - __main__ - INFO - code is 000416.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:53,487 - __main__ - INFO - count 88
+2019-03-08 00:50:53,487 - __main__ - INFO - code is 000417.SZ
+2019-03-08 00:50:53,488 - __main__ - INFO - code is 000417.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:53,974 - __main__ - INFO - count 89
+2019-03-08 00:50:53,974 - __main__ - INFO - code is 000418.SZ
+2019-03-08 00:50:53,974 - __main__ - INFO - code is 000418.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:54,541 - __main__ - INFO - count 90
+2019-03-08 00:50:54,541 - __main__ - INFO - code is 000419.SZ
+2019-03-08 00:50:54,542 - __main__ - INFO - code is 000419.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:55,068 - __main__ - INFO - count 91
+2019-03-08 00:50:55,069 - __main__ - INFO - code is 000420.SZ
+2019-03-08 00:50:55,069 - __main__ - INFO - code is 000420.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:55,611 - __main__ - INFO - count 92
+2019-03-08 00:50:55,611 - __main__ - INFO - code is 000421.SZ
+2019-03-08 00:50:55,611 - __main__ - INFO - code is 000421.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:56,179 - __main__ - INFO - count 93
+2019-03-08 00:50:56,179 - __main__ - INFO - code is 000422.SZ
+2019-03-08 00:50:56,179 - __main__ - INFO - code is 000422.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:56,737 - __main__ - INFO - count 94
+2019-03-08 00:50:56,738 - __main__ - INFO - code is 000423.SZ
+2019-03-08 00:50:56,738 - __main__ - INFO - code is 000423.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:57,289 - __main__ - INFO - count 95
+2019-03-08 00:50:57,290 - __main__ - INFO - code is 000425.SZ
+2019-03-08 00:50:57,290 - __main__ - INFO - code is 000425.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:57,836 - __main__ - INFO - count 96
+2019-03-08 00:50:57,836 - __main__ - INFO - code is 000426.SZ
+2019-03-08 00:50:57,836 - __main__ - INFO - code is 000426.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:58,420 - __main__ - INFO - count 97
+2019-03-08 00:50:58,420 - __main__ - INFO - code is 000428.SZ
+2019-03-08 00:50:58,420 - __main__ - INFO - code is 000428.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:58,968 - __main__ - INFO - count 98
+2019-03-08 00:50:58,969 - __main__ - INFO - code is 000429.SZ
+2019-03-08 00:50:58,969 - __main__ - INFO - code is 000429.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:50:59,521 - __main__ - INFO - count 99
+2019-03-08 00:50:59,521 - __main__ - INFO - code is 000430.SZ
+2019-03-08 00:50:59,521 - __main__ - INFO - code is 000430.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:00,092 - __main__ - INFO - count 100
+2019-03-08 00:51:00,093 - __main__ - INFO - code is 000488.SZ
+2019-03-08 00:51:00,093 - __main__ - INFO - code is 000488.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:00,650 - __main__ - INFO - count 101
+2019-03-08 00:51:00,651 - __main__ - INFO - code is 000498.SZ
+2019-03-08 00:51:00,651 - __main__ - INFO - code is 000498.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:01,167 - __main__ - INFO - count 102
+2019-03-08 00:51:01,167 - __main__ - INFO - code is 000501.SZ
+2019-03-08 00:51:01,167 - __main__ - INFO - code is 000501.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:01,703 - __main__ - INFO - count 103
+2019-03-08 00:51:01,703 - __main__ - INFO - code is 000502.SZ
+2019-03-08 00:51:01,703 - __main__ - INFO - code is 000502.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:02,236 - __main__ - INFO - count 104
+2019-03-08 00:51:02,237 - __main__ - INFO - code is 000503.SZ
+2019-03-08 00:51:02,237 - __main__ - INFO - code is 000503.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:02,767 - __main__ - INFO - count 105
+2019-03-08 00:51:02,768 - __main__ - INFO - code is 000504.SZ
+2019-03-08 00:51:02,769 - __main__ - INFO - code is 000504.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:03,311 - __main__ - INFO - count 106
+2019-03-08 00:51:03,311 - __main__ - INFO - code is 000505.SZ
+2019-03-08 00:51:03,312 - __main__ - INFO - code is 000505.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:03,922 - __main__ - INFO - count 107
+2019-03-08 00:51:03,923 - __main__ - INFO - code is 000506.SZ
+2019-03-08 00:51:03,923 - __main__ - INFO - code is 000506.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:04,473 - __main__ - INFO - count 108
+2019-03-08 00:51:04,474 - __main__ - INFO - code is 000507.SZ
+2019-03-08 00:51:04,474 - __main__ - INFO - code is 000507.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:04,998 - __main__ - INFO - count 109
+2019-03-08 00:51:04,998 - __main__ - INFO - code is 000509.SZ
+2019-03-08 00:51:04,998 - __main__ - INFO - code is 000509.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:05,584 - __main__ - INFO - count 110
+2019-03-08 00:51:05,585 - __main__ - INFO - code is 000510.SZ
+2019-03-08 00:51:05,585 - __main__ - INFO - code is 000510.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:06,154 - __main__ - INFO - count 111
+2019-03-08 00:51:06,155 - __main__ - INFO - code is 000513.SZ
+2019-03-08 00:51:06,155 - __main__ - INFO - code is 000513.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:06,725 - __main__ - INFO - count 112
+2019-03-08 00:51:06,726 - __main__ - INFO - code is 000514.SZ
+2019-03-08 00:51:06,726 - __main__ - INFO - code is 000514.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:07,263 - __main__ - INFO - count 113
+2019-03-08 00:51:07,264 - __main__ - INFO - code is 000516.SZ
+2019-03-08 00:51:07,264 - __main__ - INFO - code is 000516.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:07,850 - __main__ - INFO - count 114
+2019-03-08 00:51:07,850 - __main__ - INFO - code is 000517.SZ
+2019-03-08 00:51:07,850 - __main__ - INFO - code is 000517.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:08,363 - __main__ - INFO - count 115
+2019-03-08 00:51:08,363 - __main__ - INFO - code is 000518.SZ
+2019-03-08 00:51:08,363 - __main__ - INFO - code is 000518.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:08,905 - __main__ - INFO - count 116
+2019-03-08 00:51:08,906 - __main__ - INFO - code is 000519.SZ
+2019-03-08 00:51:08,906 - __main__ - INFO - code is 000519.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:09,424 - __main__ - INFO - count 117
+2019-03-08 00:51:09,424 - __main__ - INFO - code is 000520.SZ
+2019-03-08 00:51:09,424 - __main__ - INFO - code is 000520.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:10,004 - __main__ - INFO - count 118
+2019-03-08 00:51:10,004 - __main__ - INFO - code is 000521.SZ
+2019-03-08 00:51:10,005 - __main__ - INFO - code is 000521.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:10,577 - __main__ - INFO - count 119
+2019-03-08 00:51:10,577 - __main__ - INFO - code is 000523.SZ
+2019-03-08 00:51:10,578 - __main__ - INFO - code is 000523.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:11,077 - __main__ - INFO - count 120
+2019-03-08 00:51:11,077 - __main__ - INFO - code is 000524.SZ
+2019-03-08 00:51:11,077 - __main__ - INFO - code is 000524.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:11,624 - __main__ - INFO - count 121
+2019-03-08 00:51:11,624 - __main__ - INFO - code is 000525.SZ
+2019-03-08 00:51:11,624 - __main__ - INFO - code is 000525.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:12,173 - __main__ - INFO - count 122
+2019-03-08 00:51:12,173 - __main__ - INFO - code is 000526.SZ
+2019-03-08 00:51:12,173 - __main__ - INFO - code is 000526.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:12,713 - __main__ - INFO - count 123
+2019-03-08 00:51:12,713 - __main__ - INFO - code is 000528.SZ
+2019-03-08 00:51:12,714 - __main__ - INFO - code is 000528.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:13,292 - __main__ - INFO - count 124
+2019-03-08 00:51:13,293 - __main__ - INFO - code is 000529.SZ
+2019-03-08 00:51:13,293 - __main__ - INFO - code is 000529.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:13,865 - __main__ - INFO - count 125
+2019-03-08 00:51:13,866 - __main__ - INFO - code is 000530.SZ
+2019-03-08 00:51:13,866 - __main__ - INFO - code is 000530.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:14,394 - __main__ - INFO - count 126
+2019-03-08 00:51:14,394 - __main__ - INFO - code is 000531.SZ
+2019-03-08 00:51:14,395 - __main__ - INFO - code is 000531.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:14,948 - __main__ - INFO - count 127
+2019-03-08 00:51:14,948 - __main__ - INFO - code is 000532.SZ
+2019-03-08 00:51:14,949 - __main__ - INFO - code is 000532.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:15,490 - __main__ - INFO - count 128
+2019-03-08 00:51:15,490 - __main__ - INFO - code is 000533.SZ
+2019-03-08 00:51:15,490 - __main__ - INFO - code is 000533.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:16,045 - __main__ - INFO - count 129
+2019-03-08 00:51:16,046 - __main__ - INFO - code is 000534.SZ
+2019-03-08 00:51:16,046 - __main__ - INFO - code is 000534.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:16,586 - __main__ - INFO - count 130
+2019-03-08 00:51:16,587 - __main__ - INFO - code is 000536.SZ
+2019-03-08 00:51:16,587 - __main__ - INFO - code is 000536.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:17,170 - __main__ - INFO - count 131
+2019-03-08 00:51:17,171 - __main__ - INFO - code is 000537.SZ
+2019-03-08 00:51:17,171 - __main__ - INFO - code is 000537.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:17,700 - __main__ - INFO - count 132
+2019-03-08 00:51:17,700 - __main__ - INFO - code is 000538.SZ
+2019-03-08 00:51:17,701 - __main__ - INFO - code is 000538.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:18,280 - __main__ - INFO - count 133
+2019-03-08 00:51:18,280 - __main__ - INFO - code is 000539.SZ
+2019-03-08 00:51:18,280 - __main__ - INFO - code is 000539.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:18,851 - __main__ - INFO - count 134
+2019-03-08 00:51:18,851 - __main__ - INFO - code is 000540.SZ
+2019-03-08 00:51:18,851 - __main__ - INFO - code is 000540.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:19,374 - __main__ - INFO - count 135
+2019-03-08 00:51:19,374 - __main__ - INFO - code is 000541.SZ
+2019-03-08 00:51:19,374 - __main__ - INFO - code is 000541.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:19,977 - __main__ - INFO - count 136
+2019-03-08 00:51:19,978 - __main__ - INFO - code is 000543.SZ
+2019-03-08 00:51:19,978 - __main__ - INFO - code is 000543.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:20,513 - __main__ - INFO - count 137
+2019-03-08 00:51:20,513 - __main__ - INFO - code is 000544.SZ
+2019-03-08 00:51:20,513 - __main__ - INFO - code is 000544.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:21,060 - __main__ - INFO - count 138
+2019-03-08 00:51:21,061 - __main__ - INFO - code is 000545.SZ
+2019-03-08 00:51:21,061 - __main__ - INFO - code is 000545.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:21,603 - __main__ - INFO - count 139
+2019-03-08 00:51:21,603 - __main__ - INFO - code is 000546.SZ
+2019-03-08 00:51:21,604 - __main__ - INFO - code is 000546.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:22,154 - __main__ - INFO - count 140
+2019-03-08 00:51:22,154 - __main__ - INFO - code is 000547.SZ
+2019-03-08 00:51:22,154 - __main__ - INFO - code is 000547.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:22,701 - __main__ - INFO - count 141
+2019-03-08 00:51:22,701 - __main__ - INFO - code is 000548.SZ
+2019-03-08 00:51:22,701 - __main__ - INFO - code is 000548.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:23,228 - __main__ - INFO - count 142
+2019-03-08 00:51:23,229 - __main__ - INFO - code is 000550.SZ
+2019-03-08 00:51:23,229 - __main__ - INFO - code is 000550.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:23,778 - __main__ - INFO - count 143
+2019-03-08 00:51:23,779 - __main__ - INFO - code is 000551.SZ
+2019-03-08 00:51:23,779 - __main__ - INFO - code is 000551.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:24,279 - __main__ - INFO - count 144
+2019-03-08 00:51:24,279 - __main__ - INFO - code is 000552.SZ
+2019-03-08 00:51:24,280 - __main__ - INFO - code is 000552.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:24,830 - __main__ - INFO - count 145
+2019-03-08 00:51:24,831 - __main__ - INFO - code is 000553.SZ
+2019-03-08 00:51:24,831 - __main__ - INFO - code is 000553.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:25,364 - __main__ - INFO - count 146
+2019-03-08 00:51:25,364 - __main__ - INFO - code is 000554.SZ
+2019-03-08 00:51:25,364 - __main__ - INFO - code is 000554.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:25,856 - __main__ - INFO - count 147
+2019-03-08 00:51:25,857 - __main__ - INFO - code is 000555.SZ
+2019-03-08 00:51:25,857 - __main__ - INFO - code is 000555.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:26,449 - __main__ - INFO - count 148
+2019-03-08 00:51:26,450 - __main__ - INFO - code is 000557.SZ
+2019-03-08 00:51:26,450 - __main__ - INFO - code is 000557.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:26,985 - __main__ - INFO - count 149
+2019-03-08 00:51:26,986 - __main__ - INFO - code is 000558.SZ
+2019-03-08 00:51:26,986 - __main__ - INFO - code is 000558.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:27,544 - __main__ - INFO - count 150
+2019-03-08 00:51:27,544 - __main__ - INFO - code is 000559.SZ
+2019-03-08 00:51:27,544 - __main__ - INFO - code is 000559.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:28,107 - __main__ - INFO - count 151
+2019-03-08 00:51:28,108 - __main__ - INFO - code is 000560.SZ
+2019-03-08 00:51:28,108 - __main__ - INFO - code is 000560.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:28,627 - __main__ - INFO - count 152
+2019-03-08 00:51:28,627 - __main__ - INFO - code is 000561.SZ
+2019-03-08 00:51:28,627 - __main__ - INFO - code is 000561.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:29,134 - __main__ - INFO - count 153
+2019-03-08 00:51:29,135 - __main__ - INFO - code is 000563.SZ
+2019-03-08 00:51:29,135 - __main__ - INFO - code is 000563.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:29,696 - __main__ - INFO - count 154
+2019-03-08 00:51:29,696 - __main__ - INFO - code is 000564.SZ
+2019-03-08 00:51:29,696 - __main__ - INFO - code is 000564.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:30,231 - __main__ - INFO - count 155
+2019-03-08 00:51:30,231 - __main__ - INFO - code is 000565.SZ
+2019-03-08 00:51:30,231 - __main__ - INFO - code is 000565.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:30,807 - __main__ - INFO - count 156
+2019-03-08 00:51:30,808 - __main__ - INFO - code is 000566.SZ
+2019-03-08 00:51:30,808 - __main__ - INFO - code is 000566.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:31,363 - __main__ - INFO - count 157
+2019-03-08 00:51:31,363 - __main__ - INFO - code is 000567.SZ
+2019-03-08 00:51:31,363 - __main__ - INFO - code is 000567.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:31,914 - __main__ - INFO - count 158
+2019-03-08 00:51:31,914 - __main__ - INFO - code is 000568.SZ
+2019-03-08 00:51:31,915 - __main__ - INFO - code is 000568.SZ, start date: 20190227, end date: 20190307
+2019-03-08 00:51:32,461 - __main__ - INFO - count 159
+2019-03-08 00:51:32,461 - __main__ - INFO - code is 000570.SZ
