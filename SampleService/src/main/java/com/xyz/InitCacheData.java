@@ -30,11 +30,11 @@ public class InitCacheData implements ApplicationListener<ContextRefreshedEvent>
 		for(Concept concept : Constant.CONCEPT_CACHE)
 			Constant.CONCEPT_MAP_CACHE.put(concept.getCode(), concept.getName());
 		
-		//Constant.FINA_INDICATOR_CACHE = stockMiningService.findAllFinaIndicator(0, 0);
+		Constant.FINA_INDICATOR_CACHE = stockMiningService.findAllFinaIndicator(0, 0);
 		logger.info("FinaIndicator Cache was Initialized!");
-		//Constant.TOP10_HOLDERS_CACHE = stockMiningService.findAllTop10Holders(0, 0);
+		Constant.TOP10_HOLDERS_CACHE = stockMiningService.findAllTop10Holders(0, 0);
 		logger.info("Top10Holders Cache was Initialized!");
-		//Constant.STOCK_CACHE = stockMiningService.findAllStocks(0, 0);
+		Constant.STOCK_CACHE = stockMiningService.findAllStocks(0, 0);
 		logger.info("Stock Cache was Initialized!");
 		
 		

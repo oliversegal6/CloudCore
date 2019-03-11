@@ -384,6 +384,7 @@ public class StockMiningService {
 	}
 
 	public List<StockDaily> getAllHoldersContainsHuijin(List<StockDaily> initStocks) {
+		logger.info("getAllHoldersContainsHuijin start...");
 		Map<String, List<JSONObject>> allTop10Holders = findAllTop10Holders(0, 0);
 		List<StockDaily> filteredStocks = new ArrayList<StockDaily>();
 		for (StockDaily stock : initStocks) {
@@ -411,6 +412,7 @@ public class StockMiningService {
 	}
 	
 	public List<StockDaily> filteredByConcept(String con, List<StockDaily> initStocks) {
+		logger.info("filteredByConcept start...");
 		if(StringUtils.isBlank(con) || "null".equalsIgnoreCase(con))
 			return initStocks;
 		
@@ -436,6 +438,7 @@ public class StockMiningService {
 	}
 	
 	public List<StockDaily> filteredByProfit(Float profit, List<StockDaily> initStocks) {
+		logger.info("filteredByProfit start...");
 		Map<String, JSONObject>  stocksBasicProfits= findAllFinaIndicator(0, 0);
 		
 		List<StockDaily> filteredStocks = new ArrayList<StockDaily>();
@@ -459,10 +462,24 @@ public class StockMiningService {
 	public List<StockDaily> findStocksLower30Percent(StockDaily daily, Integer pageIndex, Integer pageSize) {
 		List<Stock> allStocks = findAllStocks(0, 0);
 
-		Float profitParam = daily.getProfit();
-    	Integer totalPctChgParam = daily.getTotalPctChg();
-    	String tradeDateHistParam = daily.getTradeDateHist();
-    	
+		List<StockDaily> stocks = filterByPriceChg(daily, allStocks);
+		stocks = filteredByProfit(daily.getProfit(), stocks);
+		stocks = filteredByConcept(daily.getSelectedConcept(), stocks);
+		
+		if(daily.getHasSheBaoFunder())
+			stocks = getAllHoldersContainsHuijin(stocks);
+		
+		stocks.sort((StockDaily h1, StockDaily h2) -> h1.getTotalPctChg().compareTo(h2.getTotalPctChg()));
+		stocks.sort(Comparator.comparing(StockDaily::getTotalPctChg).reversed());
+		logger.info("result count: " + stocks.size());
+		return stocks;
+	}
+
+	private List<StockDaily> filterByPriceChg(StockDaily daily, List<Stock> allStocks) {
+		logger.info("filterByPriceChg start...");
+		Integer totalPctChgParam = daily.getTotalPctChg();
+		String tradeDateHistParam = daily.getTradeDateHist();
+
 		List<StockDaily> stocks = new ArrayList<StockDaily>();
 		Calendar calendar = Calendar.getInstance();
 		Map<String, String> params = new HashMap<String, String>();
@@ -509,7 +526,7 @@ public class StockMiningService {
 			Float currentPrice = currentDailyStock.getFloat("close");
 			Float histPrice = histDailyStock.getFloat("close");
 			//Float profit = (float) 100.0;//stockProfit.getFloat("profit");
-			
+
 			Float totalPctChg = 0f;
 			if(totalPctChgParam < 0) {//跌幅大于%
 				totalPctChg = histPrice / currentPrice - 1;
@@ -522,7 +539,7 @@ public class StockMiningService {
 				if (totalPctChg > pctChgBenchMark)
 					continue;
 			}
-			
+
 
 			StockDaily stock = new StockDaily();
 			stock.setTsCode(stockJson.getTsCode());
@@ -533,21 +550,12 @@ public class StockMiningService {
 			stock.setTradeDateHist(histDailyStock.getString("trade_date"));
 			stock.setClosePrice(currentPrice);
 			stock.setClosePriceHist(histPrice);
-			stock.setPctChg(currentDailyStock.getFloat("pct_chg"));
-			stock.setPctChgHist(histDailyStock.getFloat("pct_chg"));
+			stock.setPctChg((currentDailyStock.get("pct_chg") == null)? -1 : currentDailyStock.getFloat("pct_chg"));
+			stock.setPctChgHist((histDailyStock.get("pct_chg") == null)? -1 : histDailyStock.getFloat("pct_chg"));
 			stock.setTotalPctChg(new Float(totalPctChg * 100).intValue());
 			stocks.add(stock);
 		}
-		
-		stocks = filteredByProfit(profitParam, stocks);
-		stocks = filteredByConcept(daily.getSelectedConcept(), stocks);
-		
-		if(daily.getHasSheBaoFunder())
-			stocks = getAllHoldersContainsHuijin(stocks);
-		
-		stocks.sort((StockDaily h1, StockDaily h2) -> h1.getTotalPctChg().compareTo(h2.getTotalPctChg()));
-		stocks.sort(Comparator.comparing(StockDaily::getTotalPctChg).reversed());
-		logger.info("result count: " + stocks.size());
+		logger.info("filterByPriceChg end...");
 		return stocks;
 	}
 
@@ -568,8 +576,8 @@ public class StockMiningService {
 
 	public void sendSimpleMail() throws Exception {
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom("dyc87112@qq.com");
-		message.setTo("dyc87112@qq.com");
+		message.setFrom("12067788@qq.com");
+		message.setTo("oliversegal@163.com");
 		message.setSubject("主题：简单邮件");
 		message.setText("测试邮件内容");
 

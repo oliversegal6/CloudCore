@@ -35,13 +35,17 @@ public class MongoService {
 	 }
 	 
 	 public List<JSONObject> findAll(String collectionName, Integer pageIndex, Integer pageSize) {
-		 
-		 return mongoDAO.findAll(collectionName, pageIndex, pageSize);
+		 logger.info("Query params: " + collectionName);
+		 List<JSONObject> res =   mongoDAO.findAll(collectionName, pageIndex, pageSize);
+		 logger.info("Mongo findAll finished. Size: " + res.size());
+		 return res;
 	 }
 	 
 	 public List<JSONObject> find(Map<String, String> params, String collectionName) {
 		 logger.info("Query params: " + params);
-		 return mongoDAO.find(params, collectionName);
+		 List<JSONObject> res =  mongoDAO.find(params, collectionName);
+		 logger.info("Mongo Query finished. Size: " + res.size());
+		 return res;
 	 }
 
 	 public  void dropCollection(String cName){

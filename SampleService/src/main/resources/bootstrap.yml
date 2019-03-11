@@ -17,11 +17,11 @@ spring.aop.proxy-target-class: false # Whether subclass-based (CGLIB) proxies ar
 management.security.enabled: false
 
 spring.mail.host: smtp.qq.com
-spring.mail.username: 用户名  #发送方的邮箱
-spring.mail.password: 密码  #对于qq邮箱而言 密码指的就是发送方的授权码
+spring.mail.username: 12067788@qq.com  #发送方的邮箱
+spring.mail.password: wbzasqjmjttpcaje  #对于qq邮箱而言 密码指的就是发送方的授权码
 spring.mail.properties.mail.smtp.auth: true
-spring.mail.properties.mail.smtp.starttls.enable: true
-spring.mail.properties.mail.smtp.starttls.required: true
+spring.mail.properties.mail.smtp.starttls.enable: false
+spring.mail.properties.mail.smtp.starttls.required: false
 
 ---
 spring:

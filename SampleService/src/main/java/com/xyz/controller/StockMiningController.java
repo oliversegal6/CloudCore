@@ -167,4 +167,10 @@ public class StockMiningController {
         List<StockDaily> stocks = stockMiningService.findStocksLower30Percent(daily, pageIndex, pageSize);
         return stocks.toArray(new StockDaily[stocks.size()]);
     }
+
+    @GetMapping("/sendSimpleMail")
+    public void sendSimpleMail() throws Exception {
+        stockMiningService.sendSimpleMail();
+    }
+
 }
