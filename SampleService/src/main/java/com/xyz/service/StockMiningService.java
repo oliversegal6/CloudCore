@@ -1,26 +1,19 @@
 package com.xyz.service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
+import com.xyz.util.PDFUtil;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,6 +28,8 @@ import com.xyz.pojo.StockDaily;
 import com.xyz.util.Constant;
 import com.xyz.util.DateUtil;
 import com.xyz.util.HttpclientUtil;
+
+import javax.mail.internet.MimeMessage;
 
 @Component
 public class StockMiningService {
@@ -78,11 +73,11 @@ public class StockMiningService {
     每天变动,每天18点刷新
     retrieveToday's data -> save
     * */
-	public void saveHistDailyStockByPython(String startDate, String endDate) {
+	public void saveHistDailyStockByPython(String startDate, String endDate, String isOneDay) {
 		String exe = "python";
 //        String command = "/home/oliver/Work/github/stockQuant/tushareService.py";
 
-		String[] cmdArr = new String[]{exe, tushareServicePath, startDate, endDate};
+		String[] cmdArr = new String[]{exe, tushareServicePath, startDate, endDate, isOneDay};
 		Process p = null;
 		try {
 			p = Runtime.getRuntime().exec(cmdArr);
@@ -485,7 +480,7 @@ public class StockMiningService {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("trade_date", DateUtil.dateToStr(calendar.getTime()));
 		String dynTableName = STOCK_HIST_DATA + "_" + params.get("trade_date").substring(0, 4);
-		List<JSONObject> currentDailyStocks = mongoService.find(params, dynTableName);
+		List<JSONObject> currentDailyStocks = Constant.HIST_STOCK_CACHE.isEmpty() ? mongoService.find(params, dynTableName) : Constant.HIST_STOCK_CACHE;
 
 		while (currentDailyStocks.size() == 0) {
 			calendar.add(Calendar.DAY_OF_MONTH, -1);
@@ -533,13 +528,13 @@ public class StockMiningService {
 				float pctChgBenchMark = ((Integer)Math.abs(totalPctChgParam)).floatValue()/100;
 				if (totalPctChg < pctChgBenchMark)
 					continue;
+				totalPctChg = - totalPctChg;
 			} else {//涨幅小于%
 				totalPctChg = currentPrice / histPrice  - 1;
 				float pctChgBenchMark = totalPctChgParam.floatValue()/100;
 				if (totalPctChg > pctChgBenchMark)
 					continue;
 			}
-
 
 			StockDaily stock = new StockDaily();
 			stock.setTsCode(stockJson.getTsCode());
@@ -550,8 +545,8 @@ public class StockMiningService {
 			stock.setTradeDateHist(histDailyStock.getString("trade_date"));
 			stock.setClosePrice(currentPrice);
 			stock.setClosePriceHist(histPrice);
-			stock.setPctChg((currentDailyStock.get("pct_chg") == null)? -1 : currentDailyStock.getFloat("pct_chg"));
-			stock.setPctChgHist((histDailyStock.get("pct_chg") == null)? -1 : histDailyStock.getFloat("pct_chg"));
+			stock.setPctChg((currentDailyStock.get("pct_chg") == JSONObject.NULL)? -1 : currentDailyStock.getFloat("pct_chg"));
+			stock.setPctChgHist((histDailyStock.get("pct_chg") == JSONObject.NULL)? -1 : histDailyStock.getFloat("pct_chg"));
 			stock.setTotalPctChg(new Float(totalPctChg * 100).intValue());
 			stocks.add(stock);
 		}
@@ -559,16 +554,45 @@ public class StockMiningService {
 		return stocks;
 	}
 
-	private List<JSONObject> findHistStock(JSONObject stock, Map<String, String> params, Date currentDate) {
-		// params.put("ts_code", stock.getString("ts_code"));
-		params.put("trade_date", DateUtil.dateToStr(currentDate));
-		return mongoService.find(params, STOCK_HIST_DATA);
+	public List<JSONObject> findHistStock(Map<String, String> params) {
+		String dynTableName = STOCK_HIST_DATA + "_" + params.get("trade_date").substring(0, 4);
+		return mongoService.find(params, dynTableName);
 	}
 
 	private String generateQueryBody(String apiName, String param) {
 		String body = "{\"api_name\": \"" + apiName + "\", \"token\": \"" + HTTP_API_TOKEN + "\", \"params\": " + param
 				+ "}";
 		return body;
+	}
+
+	public void generatePdfReport(){
+		StockDaily daily = new StockDaily();
+		Map<String, List<StockDaily>> mailDetails = new LinkedHashMap<String, List<StockDaily>>();
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_MONTH, -7);
+		daily.setProfit(20f);
+		daily.setTotalPctChg(-10);
+		daily.setTradeDateHist(DateUtil.dateToStr(calendar.getTime()));
+		daily.setHasSheBaoFunder(false);
+		mailDetails.put("一周以来跌幅大于10%，当前利润率在20%以上", findStocksLower30Percent(daily, 0, 0));
+
+		daily.setProfit(20f);
+		daily.setTotalPctChg(10);
+		daily.setTradeDateHist("20190101");
+		//daily.setSelectedConcept((String) param.get("selectedConcept"));
+		//daily.setHasSheBaoFunder(Boolean.valueOf((String)param.get("hasSheBaoFunder")));;
+		List<StockDaily> stocks = findStocksLower30Percent(daily, 0, 0);
+		mailDetails.put("2019/1/1以来涨幅低于10%，当前利润率在20%以上", stocks);
+
+		daily.setProfit(20f);
+		daily.setTotalPctChg(-100);
+		daily.setTradeDateHist("20170101");
+		mailDetails.put("2017/1/1以来跌幅大于100%，当前利润率在20%以上", findStocksLower30Percent(daily, 0, 0));
+
+		PDFUtil.exportPdfDocument(mailDetails);
+
+		//sendMimeMessageMail();
 	}
 
 	@Autowired
@@ -582,5 +606,25 @@ public class StockMiningService {
 		message.setText("测试邮件内容");
 
 		mailSender.send(message);
+	}
+
+	public void sendMimeMessageMail(String sendTo) {
+		MimeMessage message=mailSender.createMimeMessage();
+		try {
+			MimeMessageHelper helper=new MimeMessageHelper(message,true);
+			helper.setFrom("12067788@qq.com");
+			helper.setTo(sendTo);
+			helper.setSubject("stocks");
+			helper.setText("stocks");
+			String filePath = "/tmp/stock.pdf";
+			FileSystemResource file=new FileSystemResource(new File(filePath));
+			String fileName=filePath.substring(filePath.lastIndexOf(File.separator));
+  			//添加多个附件可以使用多条
+			helper.addAttachment(fileName,file);
+			mailSender.send(message);
+			logger.info("带附件的邮件发送成功");
+		}catch (Exception e){
+			logger.info("发送带附件的邮件失败", e);
+		}
 	}
 }

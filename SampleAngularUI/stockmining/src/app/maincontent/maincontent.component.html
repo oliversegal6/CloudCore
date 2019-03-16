@@ -71,12 +71,12 @@
           <th nzShowExpand></th>
           <th nzShowSort nzSortKey="Code">Code</th>
           <th nzShowFilter [nzFilters]="filterGender" (nzFilterChange)="updateFilter($event)">Name</th>
-          <!--<th nzShowSort nzSortKey="tradeDate"><span>行业</span></th>
+          <!--
             <th nzShowSort nzSortKey="tradeDate"><span>市场</span></th>
           -->
           <th nzShowSort nzSortKey="tradeDate"><span>概念</span></th>
-          
-          <th nzShowSort nzSortKey="totalPctChg"><span>总跌幅</span></th>
+          <th nzShowSort nzSortKey="tradeDate"><span>行业</span></th>
+          <th nzShowSort nzSortKey="totalPctChg"><span>涨跌幅</span></th>
           <th nzShowSort nzSortKey="tradeDate"><span>日期</span></th>
           <th nzShowSort nzSortKey="closePrice"><span>收盘价</span></th>
           <th nzShowSort nzSortKey="closePrice"><span>净利润增长</span></th>
@@ -92,9 +92,8 @@
           <td nzShowExpand [(nzExpand)]="data.expand"></td>
           <td>{{data.tsCode}}</td>
           <td>{{data.name}}</td>
-          
           <td>{{data.concepts}}</td>
-          
+          <td>{{data.industry}}</td>
           <td>{{data.totalPctChg}}%</td>
           <td>{{data.tradeDate}}</td>
           <td>{{data.closePrice}}</td>
@@ -109,7 +108,7 @@
             <td></td>
             <td></td>
             <td>{{data.market}}</td>
-            <td>{{data.industry}}</td>
+            <td></td>
             <td>{{data.tradeDateHist}}</td>
             <td>{{data.closePriceHist}}</td>
             <td></td>

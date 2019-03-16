@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -100,7 +101,7 @@ public class StockMiningController {
 
     @PostMapping("/saveStockHistDataByYear")
     public String saveStockHistDataByYear(String year) {
-        stockMiningService.saveHistDailyStockByPython(year + "0101", year + "1231");
+        stockMiningService.saveHistDailyStockByPython(year + "0101", year + "1231", "False");
         return "saveStockHistDataByYear done";
     }
 
@@ -168,9 +169,15 @@ public class StockMiningController {
         return stocks.toArray(new StockDaily[stocks.size()]);
     }
 
-    @GetMapping("/sendSimpleMail")
-    public void sendSimpleMail() throws Exception {
-        stockMiningService.sendSimpleMail();
+    @GetMapping("/generatePdfReport")
+    public void generatePdfReport() throws Exception {
+
+        stockMiningService.generatePdfReport();
+    }
+
+    @GetMapping("/sendMimeMessageMail")
+    public void sendMimeMessageMail(String sendTo) throws Exception {
+        stockMiningService.sendMimeMessageMail(sendTo);
     }
 
 }

@@ -2,7 +2,12 @@ package com.xyz.service;
 
 import java.io.*;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import com.xyz.util.Constant;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,8 +82,7 @@ public class StockMiningScheduledJob {
       变动比较慢，可以每季度刷新一次
       retrieveLastQuarter -> save
     * */
-    @Scheduled(cron = "0 0 18 1 * ?")
-    public void saveFinaIndicator() {
+ void saveFinaIndicator() {
         stockMiningService.saveFinaIndicator();
     }
 
@@ -87,18 +91,33 @@ public class StockMiningScheduledJob {
 	每天变动,每天18点刷新
 	retrieveToday's data -> save
 	* */
-    @Scheduled(cron = "0 0 18 * * *")
+    @Scheduled(cron = "0 0 21 * * *")
     public void saveTodayDailyStock() {
-        String startDate = DateUtil.dateToStr(Calendar.getInstance().getTime());
-        String endDate = DateUtil.dateToStr(Calendar.getInstance().getTime());
-        stockMiningService.saveHistDailyStockByPython(startDate, endDate);
+        Calendar calendar = Calendar.getInstance();
+
+        String endDate = DateUtil.dateToStr(calendar.getTime());
+        calendar.add(Calendar.YEAR, -1);
+        calendar.add(Calendar.MONTH, -1);
+        String startDate = DateUtil.dateToStr(calendar.getTime());
+
+        stockMiningService.saveHistDailyStockByPython(startDate, endDate, "True");
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("trade_date", startDate);
+        Constant.HIST_STOCK_CACHE = stockMiningService.findHistStock(params);
+        logger.info("HIST_STOCK_CACHE size: " + Constant.HIST_STOCK_CACHE.size());
+
     }
-
-
-
 
     public void saveIndexDailyByDate() {
         stockMiningService.saveIndexDailyByDate(DateUtil.dateToStr(Calendar.getInstance().getTime()));
     }
+
+    @Scheduled(cron = "0 0 23 ? * Fri")
+    public void generateReport() {
+        stockMiningService.generatePdfReport();
+        stockMiningService.sendMimeMessageMail("oliversegal@163.com");
+    }
+
 
 }

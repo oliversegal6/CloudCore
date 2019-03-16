@@ -22,7 +22,11 @@ spring.mail.password: wbzasqjmjttpcaje  #对于qq邮箱而言 密码指的就是
 spring.mail.properties.mail.smtp.auth: true
 spring.mail.properties.mail.smtp.starttls.enable: false
 spring.mail.properties.mail.smtp.starttls.required: false
-
+spring.mail.default-encoding: UTF-8
+spring.mail.port: 465
+spring.mail.properties.mail.smtp.socketFactory.port: 465
+spring.mail.properties.mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+spring.mail.properties.mail.smtp.socketFactory.fallback: false
 ---
 spring:
   profiles: local
