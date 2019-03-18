@@ -46,7 +46,7 @@ export class TaskComponent implements OnInit {
   findDailyTask(date:String): void {
 
     this.taskService.findDailyTask(date).subscribe((data: any) => {
-      this.loading = false;
+      this.loading = true;
       this.dailyTasks = data;
       console.log(this.dailyTasks);
     });
@@ -55,9 +55,17 @@ export class TaskComponent implements OnInit {
   findUser(): void {
 
     this.taskService.findUser().subscribe((data: any) => {
-      this.loading = false;
+      this.loading = true;
       this.users = data;
       console.log(this.users);
+    });
+  }
+
+  saveDailyTask(task): void {
+
+    this.taskService.saveDailyTask(task).subscribe((data: any) => {
+      this.loading = false;
+      console.log(data);
     });
   }
 
@@ -87,6 +95,12 @@ export class TaskComponent implements OnInit {
     this.taskDate = result;
     console.log(this.taskDate);
     this.initData(this.currentDateFormat(this.taskDate, 'yyyymmdd'))
+  }
+
+  onDailyTaskStatusChange(result) {
+    //this.taskDate = this.currentDateFormat(result, 'yyyymmdd');
+    console.log(result.value);
+    this.saveDailyTask(result.value);
   }
 
   formatIt(date: Date, form: string) {

@@ -14,7 +14,7 @@ export class TaskService {
   findDailyTask(date:String): Observable<{}> {
     let params = new HttpParams()
     .append('date', `${date}`);
-    
+    console.log(params)
     return this.http.get(`${this.randomUserUrl}/findDailyTask`, {
       params
     });
@@ -27,5 +27,19 @@ export class TaskService {
       params
     });
   }
+
+  saveDailyTask(tasks): Observable<{}> {
+    let params = new HttpParams().append('id', `${tasks.id}`)
+    .append('date', `${tasks.date}`)
+    .append('taskId', `${tasks.taskId}`)
+    .append('taskName', `${tasks.taskName}`)
+    .append('targetUser', `${tasks.targetUser}`)
+    .append('checked', `${tasks.checked}`);
+    console.log(params)
+    return this.http.get(`${this.randomUserUrl}/saveDailyTask`, {
+      params
+    });
+  }
+
 }
 

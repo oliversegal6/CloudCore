@@ -14,7 +14,7 @@ import com.xyz.pojo.Concept;
 import com.xyz.service.StockMiningService;
 import com.xyz.util.Constant;
 
-@Component
+//@Component
 public class InitCacheData implements ApplicationListener<ContextRefreshedEvent> {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 

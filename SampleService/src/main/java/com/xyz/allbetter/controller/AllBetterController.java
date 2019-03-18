@@ -92,12 +92,12 @@ public class AllBetterController {
     	return results.toArray(new Discipline[results.size()]);
     }
     
-    @PostMapping("/saveDailyTask")
-    public String saveDailyTask(DailyTask task){
+    @GetMapping("/saveDailyTask")
+    public void saveDailyTask(DailyTask params){
         logger.info("saveDailyTask start...");
-        allBetterService.saveDailyTask(task);
+        allBetterService.saveDailyTask(params);
         
-        return "saveDailyTask done";
+        //return "saveDailyTask done";
     }
     
     

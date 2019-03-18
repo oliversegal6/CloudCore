@@ -27,16 +27,16 @@
         <List className="my-list">
           <ng-container *ngFor="let i of dailyTasks">
               
-          <ListItem *ngIf="i.targetUser == user.id" >
-            <CheckboxItem 
-              [id]="i.id"
-              [value]="i.taskName"
-              [(ngModel)]="i.checked"
-              (onChange)="onChange($event)">
-                {{i.taskName}}
-              </CheckboxItem>
-          </ListItem>
-        </ng-container>
+            <ListItem *ngIf="i.targetUser == user.id" >
+              <CheckboxItem 
+                [id]="i.id"
+                [value]="i"
+                [(ngModel)]="i.checked"
+                (onChange)="onDailyTaskStatusChange($event)">
+                  {{i.taskName}}
+                </CheckboxItem>
+            </ListItem>
+          </ng-container>
         </List>
       </AccordionPanel>
       
